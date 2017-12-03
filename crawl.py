@@ -14,7 +14,7 @@ def crawl():
 
 
 def crawlLoop(timewindow):
-    """Crawl repeatedly."""
+    """Crawl repeatedly, not really needed cronjob works better."""
     while(True):
         currentTime = time.strftime("%Y,%m,%d,%H,%M,%S")
         _, month, day, hour, minute, second = currentTime.split(',')
