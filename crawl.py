@@ -31,10 +31,11 @@ def process(data):
     # get time for filename
     currentTime = time.strftime("%Y,%m,%d,%H,%M,%S")
     _, month, day, hour, minute, second = currentTime.split(',')
-    crawlTime = "day" + "." + month + "-" + hour + ":" + minute + ":" + second
+    crawlTime = day + "." + month + "-" + hour + ":" + minute + ":" + second
 
-    # save as json
-    with open('data/' + crawlTime + '.json', 'w') as outfile:
+    # save as json, because of the cronjob you need to specify the whole path
+    with open('/Users/christopher/Uni/GDV/Projekt/Gdv-Projekt/data/'
+              + crawlTime + '.json', 'w') as outfile:
         json.dump(dataJson, outfile)
 
 
