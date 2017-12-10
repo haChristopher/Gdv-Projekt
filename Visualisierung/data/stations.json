@@ -1,0 +1,538 @@
+{
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    50.957410536847,
+                    7.0119494627215
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Bahnhof Mühlheim ",
+                "number": 4812,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "free",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 22756
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.9429485,
+                    6.958015
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Hauptbahnhof",
+                "number": 4826,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "free",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 35409
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.938831373138,
+                    6.9062697887421
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": "21269,21908",
+                "bike_racks": 0,
+                "bike_types": {
+                    "15": 2
+                },
+                "bikes": 2,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "KVB Hauptverwaltung",
+                "number": 4821,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 430479
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.930656880252,
+                    6.9406342506409
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": "21026,21549,21719,21748,22457",
+                "bike_racks": 0,
+                "bike_types": {
+                    "15": 5,
+                    "undefined": 2
+                },
+                "bikes": 5,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Zülpicher Platz",
+                "number": 4824,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "free",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 746518
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.935924149905,
+                    6.9476187229156
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Neumarkt",
+                "number": 4822,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "free",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 774641
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.928158268407,
+                    6.9282531738281
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Uni Köln",
+                "number": 4823,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 1079530
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.935362967283,
+                    6.9611263275146
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Maritim ",
+                "number": 4827,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "free",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 1546312
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.950526039316,
+                    6.9577574729919
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Ebertplatz",
+                "number": 4828,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 1546319
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.94376647545,
+                    6.9335317611694
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 1,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Hans-Böckler-Platz",
+                "number": 4832,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 1778321
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.940061817528,
+                    6.975063085556
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Bahnhof Deutz",
+                "number": 4831,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 1979532
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.943830695931,
+                    6.95955991745
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": "21464,21207,21156,21589,21521",
+                "bike_racks": 0,
+                "bike_types": {
+                    "15": 5,
+                    "undefined": 2
+                },
+                "bikes": 5,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Breslauer Platz",
+                "number": 4834,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 1979551
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.92917936822,
+                    6.9572532176971
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Severinsstrasse",
+                "number": 4846,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 1979640
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.961764,
+                    7.004147
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Wienerplatz",
+                "number": 4835,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 1979653
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.944959609907,
+                    6.9720053672791
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "RTL Picassoplatz",
+                "number": 4847,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 2049483
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.927127002468,
+                    6.9325232505798
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Uni Mensa",
+                "number": 4849,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 2193550
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.921649075569,
+                    6.9593775272369
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Chlodwigplatz",
+                "number": 4836,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "free",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 2464901
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.919538887205,
+                    6.9666194915771
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "TH Köln Südstadt",
+                "number": 4837,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 2802298
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.927174339766,
+                    6.9037592411041
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Leonardo Royal Hotel",
+                "number": 4840,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "free",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 3176060
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.937032972765,
+                    6.9836461544037
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Hotel Stadtpalais",
+                "number": 4839,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "free",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 3176087
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.947031467523,
+                    6.9453978538513
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Motel One Mediapark",
+                "number": 4838,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "free",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 4078912
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    50.93170497246,
+                    6.9544583559036
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "bike_numbers": [],
+                "bike_racks": 0,
+                "bike_types": [],
+                "bikes": 0,
+                "free_racks": 0,
+                "maintenance": false,
+                "name": "Motel One Waidmarkt",
+                "number": 4850,
+                "rack_locks": false,
+                "spot": true,
+                "terminal_type": "",
+                "timestamp": "2017-12-10 15:58:38.667109",
+                "uid": 4078954
+            },
+            "type": "Feature"
+        }
+    ],
+    "type": "FeatureCollection"
+}
