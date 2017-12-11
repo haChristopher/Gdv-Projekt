@@ -1,0 +1,24 @@
+#station {
+	fill: #818286;
+	stroke: #9F9FA1;
+	opacity: 0.6;
+}
+
+#bike {
+	fill: #F05E5F;
+	stroke: #FFFBFA;
+	opacity: 0.9;
+}
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
