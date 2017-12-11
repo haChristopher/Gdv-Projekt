@@ -2,8 +2,8 @@ var koelnlat = 50.9429;
 var koelnlng = 6.95649;
 var zoom = 12;
 
-var stationsURL = 'data/stations.json';
-var bikesURL = 'data/bikes.json';
+var stationsURL = 'data/stations.geojson';
+var bikesURL = 'data/bikes.geojson';
 
 var map;
 var g;
@@ -68,8 +68,6 @@ d3.json(stationsURL, function(jsonStations){
     jsonStations.features.forEach(function(d){
         d.LatLng = new L.LatLng(d.geometry.coordinates[0], d.geometry.coordinates[1]);
     })
-
-    console.log(jsonStations.features);
 
     var circlesStations = gStations.selectAll('circle')
     .data(jsonStations.features)
