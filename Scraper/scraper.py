@@ -2,6 +2,7 @@
 
 import urllib.request
 import json
+import os
 import datetime
 import pickle
 from weather import Weather
@@ -11,7 +12,7 @@ nextBikeUrl = 'https://api.nextbike.net/maps/nextbike-live.json?city=14'
 
 
 currentTime = str(datetime.datetime.utcnow())
-slackToken = 'Den musst du erst runterladen!!!!!'
+slackToken = os.environ.get('SLACK_BOT_TOKEN')
 
 
 def getWeather():
@@ -126,6 +127,8 @@ def pickleCollections(collection, filename):
 
     pickle.dump(collection, open(datapath, "wb"))
 
+    return collection
+
 
 def slack_message(message, channel):
     """Send message to slack when done."""
@@ -171,11 +174,12 @@ def crawl():
 
     # pickle data
     pickleCollections(stationCollection, "stations")
-    pickleCollections(bikeCollection, "bikes")
+    x = pickleCollections(bikeCollection, "bikes")
     pickleCollections(weatherCollection, "weather")
 
     # send message to slack
-    slack_message("Im done :) Bikes crawled: " + str(len(bikelist)), "gdvprojekt")
+    slack_message("Im done :) Bikes crawled: " + str(len(bikelist))
+                  + " Bikestotal: " + str(len(x["features"])), "gdvprojekt")
 
     print("Done :)")
 
