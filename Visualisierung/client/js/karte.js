@@ -9,8 +9,8 @@ var bikesURL = 'data/bikes.geojson';
 var map;
 var g;
 
-var tooltip = d3.select("body").append("div")   
-.attr("class", "tooltip")               
+var tooltip = d3.select("body").append("div")
+.attr("class", "tooltip")
 .style("opacity", 0);
 
 map = L.map('map').setView([koelnlat, koelnlng], zoom);
@@ -30,31 +30,18 @@ var gBikes = g.append('g');
 var gStations = g.append('g');
 var gDistricts = g.append('g');
 
-/*d3.json(districtsURL, function(jsonDistricts){
+var districts = null;
+
+d3.json(districtsURL, function(jsonDistricts){
     jsonDistricts.features.forEach(function(d){
-        d.LatLng = new L.LatLng(d.geometry.coordinates[0], d.geometry.coordinates[1]);
+        districts = jsonDistricts.geometry.rings;
     })
 
-    var circlesDistricts = gBikes.selectAll('circle')
-    .data(jsonDistricts.features)
-    .enter()
-    .append('circle')
-    .attr('id', 'district')
-    .attr('r', 5)
-    .on('mouseover', function(d) {     
-        tooltip.transition()        
-        .duration(200)      
-        .style('opacity', .9);      
-        
-        div.html('<p>' + d.properties.name + '</p><br/>' + '<p>Bikes: ' + d.properties.bikes + '</p>')  
-        .style('left', (d3.event.pageX) + 'px')     
-        .style('top', (d3.event.pageY - 28) + 'px');    
-    })                  
-    .on('mouseout', function(d) {       
-        tooltip.transition()        
-        .duration(500)      
-        .style('opacity', 0);   
-    });
+    for(i = 0; i < districts.length; i++) {
+        var area = d3.polygonArea(districts[i]);
+        console.log(area);
+    }
+
 
     map.on('zoom', updateMapDistricts);
     updateMapDistricts();
@@ -64,7 +51,7 @@ var gDistricts = g.append('g');
             return 'translate(' + map.latLngToLayerPoint(d.LatLng).x + ',' + map.latLngToLayerPoint(d.LatLng).y + ')';
         })
     }
-})*/
+})
 
 d3.json(bikesURL, function(jsonBikes){
     jsonBikes.features.forEach(function(d){
@@ -77,19 +64,19 @@ d3.json(bikesURL, function(jsonBikes){
     .append('circle')
     .attr('id', 'bike')
     .attr('r', 5)
-    .on('mouseover', function(d) {     
-        tooltip.transition()        
-        .duration(200)      
-        .style('opacity', .9);      
-        
-        tool.html('<p>' + d.properties.name + '</p><br/>' + '<p>Bikes: ' + d.properties.bikes + '</p>')  
-        .style('left', (d3.event.pageX) + 'px')     
-        .style('top', (d3.event.pageY - 28) + 'px');    
-    })                  
-    .on('mouseout', function() {       
-        tooltip.transition()        
-        .duration(500)      
-        .style('opacity', 0);   
+    .on('mouseover', function(d) {
+        tooltip.transition()
+        .duration(200)
+        .style('opacity', .9);
+
+        tool.html('<p>' + d.properties.name + '</p><br/>' + '<p>Bikes: ' + d.properties.bikes + '</p>')
+        .style('left', (d3.event.pageX) + 'px')
+        .style('top', (d3.event.pageY - 28) + 'px');
+    })
+    .on('mouseout', function() {
+        tooltip.transition()
+        .duration(500)
+        .style('opacity', 0);
     });
 
     map.on('zoom', updateMapBikes);
@@ -113,19 +100,19 @@ d3.json(stationsURL, function(jsonStations){
     .append('circle')
     .attr('id', 'station')
     .attr('r', 10)
-    .on('mouseover', function(d) {     
-        tooltip.transition()        
-        .duration(200)      
-        .style('opacity', .9);      
-        
-        tooltip.html(d.properties.name)  
-        .style('left', (d3.event.pageX) + 'px')     
-        .style('top', (d3.event.pageY - 28) + 'px');    
-    })                  
-    .on('mouseout', function() {       
-        tooltip.transition()        
-        .duration(500)      
-        .style('opacity', 0);   
+    .on('mouseover', function(d) {
+        tooltip.transition()
+        .duration(200)
+        .style('opacity', .9);
+
+        tooltip.html(d.properties.name)
+        .style('left', (d3.event.pageX) + 'px')
+        .style('top', (d3.event.pageY - 28) + 'px');
+    })
+    .on('mouseout', function() {
+        tooltip.transition()
+        .duration(500)
+        .style('opacity', 0);
     });;
 
     map.on('zoom', updateMapStations);
@@ -137,3 +124,19 @@ d3.json(stationsURL, function(jsonStations){
         })
     }
 })
+
+function pointToPolygon(point, vs) {
+    var x = point[0], y = point[1];
+
+    var inside = false;
+    for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+        var xi = vs[i][0], yi = vs[i][1];
+        var xj = vs[j][0], yj = vs[j][1];
+
+        var intersect = ((yi > y) != (yj > y))
+            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+        if (intersect) inside = !inside;
+    }
+
+    return inside;
+}

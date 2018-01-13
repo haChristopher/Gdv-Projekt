@@ -18,7 +18,6 @@
     "leaflet": "^1.2.0",
     "nodemon": "^1.14.11",
     "path": "^0.12.7",
-    "point-in-polygon": "^1.0.1",
     "request": "^2.83.0",
     "xmljson": "^0.2.0"
   }
