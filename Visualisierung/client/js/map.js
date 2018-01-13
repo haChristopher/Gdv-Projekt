@@ -9,19 +9,17 @@ var tooltip = d3.select("body").append("div")
 .attr("class", "tooltip")
 .style("opacity", 0);
 
-var map = L.map('map').setView([koelnlat, koelnlng], zoom);
+var map = L.map('map', {zoomControl: false }).setView([koelnlat, koelnlng], zoom);
+map.scrollWheelZoom.disable();
 
 var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 L.tileLayer(
     'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 11,
+    attribution: '&copy; ' + mapLink + ' Contributors',
 }).addTo(map);
 
 var svgLayer = L.svg();
 svgLayer.addTo(map);
-
-var g = d3.select('#map').select('svg').select('g');
-g.attr('class', 'leaflet-zoom-hide');
 
 function pointToPolygon(point, vs) {
     var x = point[0], y = point[1];

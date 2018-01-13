@@ -1,6 +1,9 @@
 var stationsURL = 'data/stations.geojson';
 var bikesURL = 'data/bikes.geojson';
 
+var g = d3.select('#map').select('svg').select('g');
+g.attr('class', 'leaflet-zoom-hide');
+
 var gBikes = g.append('g');
 var gStations = g.append('g');
 

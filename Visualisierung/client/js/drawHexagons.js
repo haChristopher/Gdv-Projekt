@@ -1,5 +1,5 @@
 var bbox = [6.597,50.816,7.273,51.089];
-var cellSide = 1.2;
+var cellSide = 0.5;
 var options = {units: 'miles'};
 
 var hexgrid = turf.hexGrid(bbox, cellSide, options);
@@ -18,6 +18,6 @@ hexgrid.features.forEach(function(geo){
 
 L.geoJSON(geoArray, {
 	style: function(feature){
-		return {color: '#ff0000'};
+		return {color: 'red'};
 	}
 }).addTo(map);
