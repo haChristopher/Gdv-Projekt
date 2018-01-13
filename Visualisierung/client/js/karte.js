@@ -17,7 +17,7 @@ map = L.map('map').setView([koelnlat, koelnlng], zoom);
 var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 L.tileLayer(
     'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 18,
+    attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 11, minZoom: 11,
 }).addTo(map);
 
 var svgLayer = L.svg();
