@@ -16,8 +16,11 @@ hexgrid.features.forEach(function(geo){
 	geoArray.push(object);
 })
 
+var hexagonBasicStyle = {
+	'color' : '#818286',
+	'stroke': '#9F9FA1'
+}
+
 L.geoJSON(geoArray, {
-	style: function(feature){
-		return {color: 'red'};
-	}
+	style: hexagonBasicStyle
 }).addTo(map);

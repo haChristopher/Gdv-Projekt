@@ -32,4 +32,45 @@ router.get('/stations.geojson', function(req, res) {
     });
 });
 
+/*
+function checkForExistingSessions(user, callback){
+    var select = 'SELECT sessionId FROM sessions ';
+    var where = 'WHERE username="' + user + '";';
+
+    var query = select + where;
+
+    logger.log({
+        level: 'error',
+        message: 'Query sent: ' + query
+    });
+
+    connection.query(query, function(err, result, fields) {
+        if(err){
+            logger.log({
+                level: 'error',
+                message: err
+            });
+
+            callback();
+        } else{
+            logger.log({
+                level: 'info',
+                message: 'Query sent to data base.'
+            });
+
+            logger.log({
+                level: 'info',
+                message: result
+            });
+
+            if(result.length != 0){
+                tokenExists = true;
+            }
+
+            callback();
+        }
+    })
+} 
+*/
+
 module.exports = router;
