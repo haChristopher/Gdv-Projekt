@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 
 const nextbikeData = require('./routes/nextbikeData.js');
+const gebieteData = require('./routes/gebieteData.js');
 
 var app = express();
 
@@ -11,6 +12,7 @@ app.use('/scripts', express.static(path.join(__dirname, '/node_modules/leaflet/d
 app.use('/scripts', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 app.use('/styles', express.static(path.join(__dirname, '/node_modules/leaflet/dist/')));
 app.use('/data', nextbikeData);
+app.use('/gebiete', gebieteData);
 
 app.set('port', 3000);
 

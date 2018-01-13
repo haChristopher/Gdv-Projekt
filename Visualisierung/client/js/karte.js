@@ -1,14 +1,15 @@
 var koelnlat = 50.9429;
 var koelnlng = 6.95649;
-var zoom = 12;
+var zoom = 11;
 
+var districtsURL = '/data/stadtgebiete.geojson';
 var stationsURL = 'data/stations.geojson';
 var bikesURL = 'data/bikes.geojson';
 
 var map;
 var g;
 
-var div = d3.select("body").append("div")   
+var tooltip = d3.select("body").append("div")   
 .attr("class", "tooltip")               
 .style("opacity", 0);
 
@@ -27,6 +28,43 @@ g.attr('class', 'leaflet-zoom-hide');
 
 var gBikes = g.append('g');
 var gStations = g.append('g');
+var gDistricts = g.append('g');
+
+/*d3.json(districtsURL, function(jsonDistricts){
+    jsonDistricts.features.forEach(function(d){
+        d.LatLng = new L.LatLng(d.geometry.coordinates[0], d.geometry.coordinates[1]);
+    })
+
+    var circlesDistricts = gBikes.selectAll('circle')
+    .data(jsonDistricts.features)
+    .enter()
+    .append('circle')
+    .attr('id', 'district')
+    .attr('r', 5)
+    .on('mouseover', function(d) {     
+        tooltip.transition()        
+        .duration(200)      
+        .style('opacity', .9);      
+        
+        div.html('<p>' + d.properties.name + '</p><br/>' + '<p>Bikes: ' + d.properties.bikes + '</p>')  
+        .style('left', (d3.event.pageX) + 'px')     
+        .style('top', (d3.event.pageY - 28) + 'px');    
+    })                  
+    .on('mouseout', function(d) {       
+        tooltip.transition()        
+        .duration(500)      
+        .style('opacity', 0);   
+    });
+
+    map.on('zoom', updateMapDistricts);
+    updateMapDistricts();
+
+    function updateMapDistricts(){
+        circlesDistricts.attr('transform', function(d){
+            return 'translate(' + map.latLngToLayerPoint(d.LatLng).x + ',' + map.latLngToLayerPoint(d.LatLng).y + ')';
+        })
+    }
+})*/
 
 d3.json(bikesURL, function(jsonBikes){
     jsonBikes.features.forEach(function(d){
@@ -44,11 +82,11 @@ d3.json(bikesURL, function(jsonBikes){
         .duration(200)      
         .style('opacity', .9);      
         
-        div.html('<p>' + d.properties.name + '</p><br/>' + '<p>Bikes: ' + d.properties.bikes + '</p>')  
+        tool.html('<p>' + d.properties.name + '</p><br/>' + '<p>Bikes: ' + d.properties.bikes + '</p>')  
         .style('left', (d3.event.pageX) + 'px')     
         .style('top', (d3.event.pageY - 28) + 'px');    
     })                  
-    .on('mouseout', function(d) {       
+    .on('mouseout', function() {       
         tooltip.transition()        
         .duration(500)      
         .style('opacity', 0);   
@@ -80,11 +118,11 @@ d3.json(stationsURL, function(jsonStations){
         .duration(200)      
         .style('opacity', .9);      
         
-        div.html(d.properties.name)  
+        tooltip.html(d.properties.name)  
         .style('left', (d3.event.pageX) + 'px')     
         .style('top', (d3.event.pageY - 28) + 'px');    
     })                  
-    .on('mouseout', function(d) {       
+    .on('mouseout', function() {       
         tooltip.transition()        
         .duration(500)      
         .style('opacity', 0);   
