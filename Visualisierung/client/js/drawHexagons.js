@@ -7,6 +7,8 @@ var hexgrid = turf.hexGrid(bbox, cellSide, options);
 var geoArray = [];
 
 hexgrid.features.forEach(function(geo){
+	
+	
 	var object = {
 		type: 'Feature',
 		properties: null,
