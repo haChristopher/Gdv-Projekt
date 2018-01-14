@@ -11,12 +11,13 @@ var maxAmount;
 var hexCounter = 0;
 var hexValues = [];
 
-function drawHexagons(bikes){
+function drawHexagons(callback){
     async.series([
         function(callback) {createArrayOfHexagons(callback);},
         function(callback) {countBikesInHexagon(bikes, callback);},
         function(callback) {getMaxAmount(callback);},
-        function(callback) {colorCodeHexagons(callback);}
+        function(callback) {colorCodeHexagons(callback);},
+        function(callback) {removeOldHexagons(callback);}
     ], function(err) {
         if (err) {
             console.log(err);
@@ -36,10 +37,14 @@ function drawHexagons(bikes){
 		allHexagons.eachLayer(function (hexagon) {
 			if(hexagon._path.classList[0] === 'filledHexagons'){
 				hexagon._path.id = 'hexagon';
+			}else{
+				hexagon._path.id = 'greyHexagon';
 			}
 		});
 
 		addToolTip();
+
+		callback();
     });	
 }
 
@@ -141,4 +146,11 @@ function getMaxAmount(callback){
 			callback();
 		}
 	}
+}
+
+function removeOldHexagons(callback){
+	d3.selectAll('#hexagon').remove();
+	d3.selectAll('#greyHexagon').remove();
+
+	callback();
 }

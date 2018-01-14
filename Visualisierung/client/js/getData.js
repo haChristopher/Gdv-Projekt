@@ -2,11 +2,7 @@ var urlTimeframe = '/api/data';
 var urlTotalbikes = '/api/totalbikes';
 var bikesURL = 'data/bikes.geojson';
 
-var startTimestamp = '2017-12-13T06:00:00Z';
-
-var postbody = {
-    'time': startTimestamp
-}
+var queryTimestamp = '2017-12-13T06:00:00Z';
 
 var bikes = null;
 var totalBikes = null;
@@ -15,7 +11,6 @@ var totalBikes = null;
     async.series([
         function(callback) {sendRequestForTotalBikes(callback);},
         function(callback) {drawGraph(callback);},
-        function(callback) {sendRequestForTimeframe(callback);},
         function(callback) {drawWeather(callback);}
     ], function(err) {
         if (err) {
@@ -23,11 +18,15 @@ var totalBikes = null;
             throw err;
         }
 
-        drawHexagons(bikes);
+        var postbody = {
+            'time': queryTimestamp
+        }
+
+        initiateHexagons(postbody);
     });
 })();
 
-function sendRequestForTimeframe(callback){
+function sendRequestForTimeframe(postbody, callback){
     bikes = null;
     $.ajax({
         url: urlTimeframe,
@@ -127,5 +126,19 @@ function sendRequestForTotalBikes(callback){
         console.log('Data successfully loaded.');
 
         callback();
+    });
+}
+
+function initiateHexagons(postbody){
+    async.series([
+        function(callback) {sendRequestForTimeframe(postbody, callback);},
+        function(callback) {drawHexagons(callback);}
+    ], function(err) {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+
+        console.log('Hexagons built');
     });
 }

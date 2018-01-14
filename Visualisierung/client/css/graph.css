@@ -19,6 +19,10 @@
 	stroke: #FFFFFF;
 }
 
+.selected-line path{
+	stroke: #FFFFFF;
+}
+
 .graphBackground {
 	fill: #3c3c3c;
 }

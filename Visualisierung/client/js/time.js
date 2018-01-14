@@ -65,6 +65,12 @@ function drawGraph(callback){
     .style("stroke-width", "1px")
     .style("opacity", "0");
 
+        mouseG.append("path")
+    .attr("class", "selected-line")
+        .style("stroke", "white")
+    .style("stroke-width", "1px")
+    .style("opacity", "0");
+
   var verticalLine = mouseG.append('rect') // append a rect to catch mouse movements on canvas
       .attr('width', width-margin.right) // can't catch mouse events on a g element
       .attr('height', height)
@@ -107,6 +113,26 @@ function drawGraph(callback){
   })
   .on('click', function(){
     var mouse = d3.mouse(this);
+    var x0 = x.invert(d3.mouse(this)[0]);
+    var i = bisectDate(totalBikes, x0, 0);
+    if(i === totalBikes.length){
+      i--;
+    }
+
+    d3.select('.selected-line')
+      .style("opacity", "1")
+          .attr("d", function() {
+            var d = "M" + mouse[0] + "," + (height-(margin.top*1.5));
+            d += " " + mouse[0] + "," + margin.top;
+            return d;
+          });
+
+    queryTimestamp = totalBikes[i].b_time;
+      var postbody = {
+        'time': queryTimestamp
+      }
+
+      initiateHexagons(postbody);
   });
 
   callback();
