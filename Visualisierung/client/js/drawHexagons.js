@@ -23,8 +23,8 @@ function drawHexagons(bikes){
 		L.geoJSON(geoArray, {
 			style: function(hexagon){
 				var hexStyle = {
-				opacity: hexagon.properties.opacity,
-					class: hexagon.properties.class
+					fillOpacity: hexagon.properties.opacity,
+					className: hexagon.properties.class,
 				};
 				return hexStyle;
 			}
@@ -102,7 +102,7 @@ function colorCodeHexagons(callback){
 
 		if(hexagon.properties.amount != 0 && hexagon.properties.amount != null){
 			hexagon.properties.class = 'filledHexagons';
-			hexagon.properties.opacity = (hexagon.properties.amount/maxAmount)+0.1;
+			hexagon.properties.opacity = (hexagon.properties.amount/maxAmount)+0.3;
 		}
 
 		if(i === (geoArray.length-1)){

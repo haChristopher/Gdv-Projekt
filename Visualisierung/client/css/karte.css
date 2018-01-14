@@ -1,9 +1,14 @@
 .hexagons {
 	fill: #818286;
+    stroke: #818286;
+    opacity: 0.5;
+    stroke-width: 1;
 }
 
 .filledHexagons {
 	fill: #F05E5F;
+    stroke: #F05E5F;
+    stroke-width: 1;
 }
 
 div.tooltip {	
