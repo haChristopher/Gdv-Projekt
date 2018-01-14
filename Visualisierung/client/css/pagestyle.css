@@ -33,68 +33,78 @@ html, body {
     height: 1080px;
     width: 480px;
     margin: 0;
-    color: white;
+    color: #f7f7f7;
 }
 
 .headline {
-    margin:10px 0px 10px 0px;
-    height: 210px;
+    margin:10px 0px 10px 10px;
+    height: 160px;
     width: 450px;
-    font-size: 90px;
+    font-size: 40px;
     font-weight: lighter;
-    font-family: monospace;
-    text-align: center;
+    font-family: Ubuntu Mono;
+    text-align: right;
 }
 
 .hexbikeImage {
-    height: 100px;
-}
-
-.explanation {
-    margin:10px 10px 10px 0px;
-    height: 350px;
-    width: 450px;
-    font-size: 45px;
-    font-weight: lighter;
-    font-family: monospace;
-    text-align: center;
+    height: 25px;
 }
 
 .legend {
-    margin:10px 10px 10px 0px;
+    margin: 10px 10px 10px 10px;
+    padding-left: 40px;
     height: 200px;
     width: 450px;
-    font-size: 45px;
+    font-size: 30px;
     font-weight: lighter;
-    font-family: monospace;
-    text-align: center;
+    font-family: Ubuntu Mono;
+    text-align: left;
+}
+
+#legendHeadline {
+    font-size: 30px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+.legendImage {
+    height: 75px;
+}
+
+.explanation {
+    margin:10px 10px 10px 10px;
+    padding-left: 40px;
+    height: 350px;
+    width: 450px;
+    font-size: 30px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+    text-align: left;
+}
+
+p {
+    font-size: 20px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+    text-align: left;
 }
 
 .weather {
-    margin:10px 10px 10px 0px;
-    height: 170px;
+    margin:10px 10px 10px 10px;
+    height: 270px;
     width: 450px;
     padding-top: 30px;
-    text-align: center;
+    text-align: left;
 }
 
 .weatherImage {
     height: 75px;
 }
 
-.footer {
-    margin:10px 10px 10px 0px;
-    height: 90px;
-    width: 450px;
-    text-align: right;
-}
-
 .logos {
     height: 70px;
-}
-
-.weatherImageTest {
-    height: 50px;
 }
 
 .temperature {
@@ -102,14 +112,11 @@ html, body {
 }
 
 .temperatureAsNumber {
-    font-weight: lighter;
     font-size: 105px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
 }
 
 .celsius {
     height: 50px;
-}
-
-.test {
-    margin:5px 5px 5px 5px;
 }
