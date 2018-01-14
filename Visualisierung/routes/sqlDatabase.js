@@ -8,7 +8,8 @@ var connection = mysql.createConnection({
     "user": "root",
     "password": "root",
     "port": "3306",
-    "database": "gdv_nextbike"
+    "database": "gdv_nextbike",
+    "timezone": 'utc'
 });
 
 connection.connect();
@@ -22,8 +23,24 @@ let response = {
 
 
 /* get weather from database */
-router.get('/data', function (req, res) {
-    connection.query('SELECT * FROM bike_location_total_weather_by_time', function (error, results) {
+router.post('/data', function (req, res) {
+    console.log(req.body);
+    var timestamp = req.body.time;
+    connection.query('SELECT * FROM bike_location_total_weather_by_time WHERE b_time = ' +
+                      mysql.escape(timestamp), function (error, results) {
+        if (error) {
+            throw error;
+        } else {
+            response.data = results;
+            res.json(response);
+        }
+    });
+});
+
+
+/* get weather from database */
+router.get('/wetter', function (req, res) {
+    connection.query('SELECT * FROM wetter', function (error, results) {
         if (error) {
             throw error;
         } else {

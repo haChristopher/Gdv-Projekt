@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 var express = require('express');
 var path = require('path');
+const bodyParser = require('body-parser');
 
 const nextbikeData = require('./routes/nextbikeData.js');
 const gebieteData = require('./routes/gebieteData.js');
@@ -8,6 +9,11 @@ const gebieteData = require('./routes/gebieteData.js');
 var app = express();
 
 app.use(express.static(path.join(__dirname, 'client')));
+// Parsers
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 // API file for interacting with MongoDB
 const api = require('./routes/sqlDatabase.js');
