@@ -1,0 +1,24 @@
+.line{
+    stroke: #F05E5F;
+}
+
+.axis path{
+	stroke: #FFFFFF;
+}
+
+.axis{
+	stroke: #FFFFFF;
+}
+
+.tick line{
+	stroke: #FFFFFF;
+}
+
+
+.mouse-line path{
+	stroke: #FFFFFF;
+}
+
+.graphBackground {
+	fill: #3c3c3c;
+}

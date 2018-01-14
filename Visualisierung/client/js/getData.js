@@ -1,6 +1,8 @@
 var url = '/api/bikes';
 var bikesURL = 'data/bikes.geojson';
 
+var startTimestamp = '2017-12-13 05:00:00';
+
 var bikes = null;
 
 d3.json(bikesURL, function(jsonBikes){
@@ -29,7 +31,12 @@ function getData(){
 function sendRequest(callback){
     $.ajax({
         url: url,
-        method: 'GET',
+        method: '',
+        contentType: 'application/json',
+        data: {
+            'time' : startTimestamp
+        },
+        dataType: 'json',
         success: function(data) {
             console.log(data);
         },

@@ -44,6 +44,11 @@ var svg = d3.select('#time')
   .attr('width' , '100%')
   .attr('height', '100%');
 
+svg.append('rect')
+  .attr('class', 'graphBackground')
+  .attr('width' , '100%')
+  .attr('height', '100%');
+
 var g = svg.append('g')
   .attr('class', 'timeG')
   .attr('width' , '100%')
@@ -51,11 +56,13 @@ var g = svg.append('g')
 
 g.append("g")
   .attr('width', '100%')
+  .attr('class', 'axis')
   .attr("transform", "translate(" + margin.left + "," + (height-margin.bottom) + ")")
   .call(d3.axisBottom(x).ticks(6));
 
 g.append("g")
   .attr('height', '100%')
+  .attr('class', 'axis')
   .attr("transform", "translate(" + margin.left + ",0)")
   .call(d3.axisLeft(y).ticks(6));
 
@@ -70,7 +77,7 @@ var mouseG = g.append("g") // this is the black vertical line to follow mouse
 
 mouseG.append("path")
   .attr("class", "mouse-line")
-  .style("stroke", "black")
+  .style("stroke", "white")
   .style("stroke-width", "1px")
   .style("opacity", "0");
 
@@ -100,7 +107,7 @@ verticalLine.on('mouseout', function() { // on mouse out hide line, circles and 
       var i = bisectDate(data, x0, 0)+1;
       d3.select(".mouse-line")
         .attr("d", function() {
-          var d = "M" + (margin.left + (step*i)) + "," + (height);
+          var d = "M" + (margin.left + (step*i)) + "," + (height-(margin.top*1.5));
           d += " " + (margin.left + (step*i)) + "," + margin.top;
           return d;
         });

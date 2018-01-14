@@ -1,4 +1,4 @@
-var bbox = [6.597,50.716,7.373,51.089];
+var bbox = [minX,minY,maxX,maxY];
 var cellSide = 0.5;
 var options = {units: 'miles'};
 
