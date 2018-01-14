@@ -1,0 +1,6 @@
+
+function drawWeather(callback){
+
+
+  callback();
+}

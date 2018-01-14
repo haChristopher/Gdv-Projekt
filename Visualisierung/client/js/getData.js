@@ -14,8 +14,9 @@ var totalBikes = null;
 (function getData(){
     async.series([
         function(callback) {sendRequestForTotalBikes(callback);},
-        function(callback) {drawGraph(callback)},
-        function(callback) {sendRequestForTimeframe(callback);}
+        function(callback) {drawGraph(callback);},
+        function(callback) {sendRequestForTimeframe(callback);},
+        function(callback) {drawWeather(callback);}
     ], function(err) {
         if (err) {
             console.log(err);
@@ -23,7 +24,7 @@ var totalBikes = null;
         }
 
         drawHexagons(bikes);
-    }); 
+    });
 })();
 
 function sendRequestForTimeframe(callback){
