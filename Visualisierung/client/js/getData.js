@@ -8,21 +8,21 @@ var bikes = null;
 var totalBikes = null;
 
 (function getData(){
+    var postbody = {
+        'time': queryTimestamp
+    }
+    
     async.series([
         function(callback) {sendRequestForTotalBikes(callback);},
         function(callback) {drawGraph(callback);},
+        function(callback) {sendRequestForTimeframe(postbody, callback);},
+        function(callback) {drawHexagons(callback);},
         function(callback) {drawWeather(callback);}
     ], function(err) {
         if (err) {
             console.log(err);
             throw err;
         }
-
-        var postbody = {
-            'time': queryTimestamp
-        }
-
-        initiateHexagons(postbody);
     });
 })();
 
