@@ -1,10 +1,10 @@
 var koelnlat = 50.9429;
 var koelnlng = 6.95649;
-var zoom = 11;
+var zoom = 12;
 
-var minX = 6.597; 
+var minX = 6.597;
 var minY = 50.716;
-var maxX = 7.373; 
+var maxX = 7.373;
 var maxY = 51.089;
 
 var point1 = L.latLng(minY+0.01, minX+0.01),
@@ -43,14 +43,14 @@ map.on('drag', function() {
 // Dark themed map without labels, white street lines
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-	maxZoom: 12,
-	minZoom: 11
+	maxZoom: 13,
+	minZoom: 12
 }).addTo(map);
 L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{ext}', {
 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	ext: 'png',
-	maxZoom: 12,
-	minZoom: 11
+	maxZoom: 13,
+	minZoom: 12
 }).addTo(map);
 //
 // var accessToken = "pk.eyJ1IjoiaHJ5Y2FqZiIsImEiOiJjamE0aWRienM5ejMxMzNsZ2ZwZG9wZ3Q4In0._r3j2dQt_yXrM9dFZxzv5Q";
