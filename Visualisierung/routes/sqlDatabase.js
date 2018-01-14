@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
     "password": "root",
     "port": "3306",
     "database": "gdv_nextbike",
-    "timezone": 'local'
+    "timezone": 'utc'
 });
 
 connection.connect();
