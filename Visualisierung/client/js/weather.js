@@ -4,7 +4,6 @@ function drawWeather(callback){
   console.log("HALLOOOOO");
 
   var weatherText = bikes[0].w_text;
-  weatherText = "Rain";
   var imagePath = "./images/" + weatherText + ".svg";
 
 
@@ -34,7 +33,7 @@ function drawImage(callback, imagePath){
       .attr("xlink:href", imagePath)
       .attr("width", 100)
       .attr("height", 100)
-      .attr("x", 0)
+      .attr("x", 10)
       .attr("y", 0);
 
     callback();
