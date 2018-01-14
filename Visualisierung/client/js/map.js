@@ -44,13 +44,13 @@ map.on('drag', function() {
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	maxZoom: 13,
-	minZoom: 11
+	minZoom: 12
 }).addTo(map);
 L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{ext}', {
 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	ext: 'png',
 	maxZoom: 13,
-	minZoom: 11
+	minZoom: 12
 }).addTo(map);
 //
 // var accessToken = "pk.eyJ1IjoiaHJ5Y2FqZiIsImEiOiJjamE0aWRienM5ejMxMzNsZ2ZwZG9wZ3Q4In0._r3j2dQt_yXrM9dFZxzv5Q";
