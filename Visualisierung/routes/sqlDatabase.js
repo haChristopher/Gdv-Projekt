@@ -51,8 +51,8 @@ router.get('/totalbikes', function (req, res) {
 });
 
 /* get weather from database */
-router.get('/wetter', function (req, res) {
-    connection.query('SELECT * FROM wetter', function (error, results) {
+router.get('/weatherhourly', function (req, res) {
+    connection.query('SELECT * FROM weatherhourly', function (error, results) {
         if (error) {
             throw error;
         } else {
