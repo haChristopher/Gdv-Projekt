@@ -3,7 +3,6 @@ var koelnlng = 6.95649;
 var zoom = 11;
 
 var map;
-var g;
 
 var tooltip = d3.select("body").append("div")
 .attr("class", "tooltip")

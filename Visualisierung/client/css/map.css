@@ -11,6 +11,12 @@
     stroke-width: 1;
 }
 
+.line{
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 2px;
+}
+
 div.tooltip {	
     position: absolute;
     z-index: 9999;			

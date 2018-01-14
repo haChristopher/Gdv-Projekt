@@ -39,7 +39,7 @@ function drawHexagons(bikes){
 			}
 		});
 
-		bla();
+		addToolTip();
     });	
 }
 
