@@ -21,8 +21,8 @@ let response = {
 };
 
 
-/* get all users from database */
-router.get('/wetter', function (req, res) {
+/* get weather from database */
+router.get('/weather', function (req, res) {
     connection.query('SELECT * FROM wetter', function (error, results) {
         if (error) {
             throw error;
@@ -33,9 +33,8 @@ router.get('/wetter', function (req, res) {
     });
 });
 
-/* get all users from database */
+/* get all bikes from database */
 router.get('/bikes', function (req, res) {
-    console.log('hello');
     connection.query('SELECT * FROM bikes', function (error, results) {
         if (error) {
             throw error;
@@ -46,8 +45,8 @@ router.get('/bikes', function (req, res) {
     });
 });
 
-/* get all users from database */
-router.get('/stationen', function (req, res) {
+/* get all stations from database */
+router.get('/stations', function (req, res) {
     connection.query('SELECT * FROM stationen', function (error, results) {
         if (error) {
             throw error;
