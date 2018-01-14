@@ -37,44 +37,73 @@ html, body {
 }
 
 .headline {
-    margin:10px 10px 10px 0px;
-    height: 160px;
+    margin:10px 0px 10px 0px;
+    height: 210px;
     width: 450px;
+    font-size: 90px;
+    font-weight: lighter;
+    font-family: monospace;
+    text-align: center;
+}
+
+.hexbikeImage {
+    height: 100px;
 }
 
 .explanation {
     margin:10px 10px 10px 0px;
-    height: 400px;
+    height: 350px;
     width: 450px;
+    font-size: 45px;
+    font-weight: lighter;
+    font-family: monospace;
+    text-align: center;
 }
 
 .legend {
     margin:10px 10px 10px 0px;
     height: 200px;
     width: 450px;
+    font-size: 45px;
+    font-weight: lighter;
+    font-family: monospace;
+    text-align: center;
 }
 
 .weather {
     margin:10px 10px 10px 0px;
-    height: 270px;
+    height: 170px;
     width: 450px;
+    padding-top: 30px;
+    text-align: center;
 }
 
 .weatherImage {
-    height: 100px;
+    height: 75px;
+}
+
+.footer {
+    margin:10px 10px 10px 0px;
+    height: 90px;
+    width: 450px;
+    text-align: right;
+}
+
+.logos {
+    height: 70px;
 }
 
 .weatherImageTest {
     height: 50px;
 }
 
-.temp {
+.temperature {
     height: 50px;
 }
 
-.tempAsNumber {
+.temperatureAsNumber {
     font-weight: lighter;
-    font-size: 140px;
+    font-size: 105px;
 }
 
 .celsius {
