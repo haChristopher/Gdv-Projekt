@@ -10,7 +10,7 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'client')));
 
 // API file for interacting with MongoDB
-const api = require('./routes/sqlDatabase');
+const api = require('./routes/sqlDatabase.js');
 
 // API location
 app.use('/api', api);
@@ -18,6 +18,7 @@ app.use('/api', api);
 app.use('/scripts', express.static(path.join(__dirname, '/node_modules/d3/build/')));
 app.use('/scripts', express.static(path.join(__dirname, '/node_modules/leaflet/dist/')));
 app.use('/scripts', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
+app.use('/scripts', express.static(path.join(__dirname, '/node_modules/async/dist/')));
 app.use('/styles', express.static(path.join(__dirname, '/node_modules/leaflet/dist/')));
 app.use('/data', nextbikeData);
 app.use('/gebiete', gebieteData);

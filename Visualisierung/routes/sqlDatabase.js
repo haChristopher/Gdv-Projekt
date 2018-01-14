@@ -7,8 +7,9 @@ var connection = mysql.createConnection({
     "host": "localhost",
     "user": "root",
     "password": "root",
-    "database": "GDV_Nextbike"
-  });
+    "port": "3306",
+    "database": "gdv_nextbike"
+});
 
 connection.connect();
 
@@ -34,6 +35,7 @@ router.get('/wetter', function (req, res) {
 
 /* get all users from database */
 router.get('/bikes', function (req, res) {
+    console.log('hello');
     connection.query('SELECT * FROM bikes', function (error, results) {
         if (error) {
             throw error;

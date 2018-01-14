@@ -1,13 +1,9 @@
-#station {
+.hexagons {
 	fill: #818286;
-	stroke: #9F9FA1;
-	opacity: 0.6;
 }
 
-#bike {
+.filledHexagons {
 	fill: #F05E5F;
-	stroke: #FFFBFA;
-	opacity: 0.9;
 }
 
 div.tooltip {	
