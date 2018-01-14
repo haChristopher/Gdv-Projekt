@@ -39,8 +39,8 @@ router.post('/data', function (req, res) {
 
 
 /* get weather from database */
-router.get('/alldata', function (req, res) {
-    connection.query('SELECT * FROM bike_location_total_weather_by_time', function (error, results) {
+router.get('/totalbikes', function (req, res) {
+    connection.query('SELECT * FROM totalbikes', function (error, results) {
         if (error) {
             throw error;
         } else {
