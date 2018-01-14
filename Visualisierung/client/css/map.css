@@ -30,3 +30,17 @@ div.tooltip {
     border-radius: 8px;			
     pointer-events: none;			
 }
+
+div.graphTooltip {   
+    position: absolute;
+    z-index: 9999;          
+    text-align: center;         
+    width: 65px;                    
+    height: 35px;                   
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightsteelblue; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;           
+}
