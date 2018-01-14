@@ -1,9 +1,9 @@
 var graphTooltip = d3.select("body").append("div")
-.attr("class", "tooltip")
+.attr("class", "graphTooltip")
 .style("opacity", 0);
 
 function drawGraph(callback){
-  var margin = {top: 10, right: 15, bottom: 20, left: 15};
+  var margin = {top: 10, right: 37, bottom: 20, left: 15};
   var width = parseInt((d3.select('#time').attr('width')).substring(0,4));
   var height = parseInt((d3.select('#time').attr('height')).substring(0,4));
 
@@ -66,42 +66,44 @@ function drawGraph(callback){
     .style("opacity", "0");
 
   var verticalLine = mouseG.append('rect') // append a rect to catch mouse movements on canvas
-      .attr('width', width) // can't catch mouse events on a g element
+      .attr('width', width-margin.right) // can't catch mouse events on a g element
       .attr('height', height)
       .attr('fill', 'none')
-      .attr('pointer-events', 'all');
+      .attr('pointer-events', 'all')
+      .attr('x', margin.left*2);
       
   verticalLine.on('mouseout', function() { // on mouse out hide line, circles and text
         d3.select('.mouse-line')
           .style("opacity", "0");
-        var mouse = d3.mouse(this);
-        var x0 = x.invert(d3.mouse(this)[0]);
-        var i = bisectDate(totalBikes, x0, 0);
-
-        tooltip.transition()
-            .duration(200)
-            .style('opacity', .9);
-
-        tooltip.html('Anzahl Fahrräder: <strong>' + hexAmount + '</strong>')
-            .style('left', (d3.event.pageX + 10) + 'px')
-            .style('top', (d3.event.pageY + 10) + 'px');
+        graphTooltip.transition()
+          .duration(500)
+          .style('opacity', 0);
   })
   .on('mouseover', function() { // on mouse in show line, circles and text
         d3.select('.mouse-line')
           .style("opacity", "1");
-        // d3.selectAll(".mouse-per-line text")
-        //   .style("opacity", "1");
       })
   .on('mousemove', function() { // mouse moving over canvas
         var mouse = d3.mouse(this);
         var x0 = x.invert(d3.mouse(this)[0]);
         var i = bisectDate(totalBikes, x0, 0);
+        if(i === totalBikes.length){
+          i--;
+        }
         d3.select(".mouse-line")
           .attr("d", function() {
             var d = "M" + mouse[0] + "," + (height-(margin.top*1.5));
             d += " " + mouse[0] + "," + margin.top;
             return d;
           });
+
+        graphTooltip.transition()
+            .duration(200)
+            .style('opacity', .9);
+
+        graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong>')
+            .style('left', (d3.event.pageX - 75) + 'px')
+            .style('top', (d3.event.pageY - 20) + 'px');
   })
   .on('click', function(){
     var mouse = d3.mouse(this);
