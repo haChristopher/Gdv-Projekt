@@ -22,8 +22,8 @@ let response = {
 
 
 /* get weather from database */
-router.get('/weather', function (req, res) {
-    connection.query('SELECT * FROM wetter', function (error, results) {
+router.get('/data', function (req, res) {
+    connection.query('SELECT * FROM bike_location_total_weather_by_time', function (error, results) {
         if (error) {
             throw error;
         } else {
