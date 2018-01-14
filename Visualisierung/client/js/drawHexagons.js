@@ -8,6 +8,9 @@ var geoArray = [];
 
 var maxAmount;
 
+var hexCounter = 0;
+var hexValues = [];
+
 function drawHexagons(bikes){
     async.series([
         function(callback) {createArrayOfHexagons(callback);},
@@ -20,15 +23,23 @@ function drawHexagons(bikes){
             throw err;
         }
 
-		L.geoJSON(geoArray, {
+		allHexagons = L.geoJSON(geoArray, {
 			style: function(hexagon){
 				var hexStyle = {
 					fillOpacity: hexagon.properties.opacity,
-					className: hexagon.properties.class,
+					className: hexagon.properties.class
 				};
 				return hexStyle;
 			}
 		}).addTo(map);
+
+		allHexagons.eachLayer(function (hexagon) {
+			if(hexagon._path.classList[0] === 'filledHexagons'){
+				hexagon._path.id = 'hexagon';
+			}
+		});
+
+		bla();
     });	
 }
 
@@ -97,12 +108,16 @@ function pointToPolygon(point, vs) {
 }
 
 function colorCodeHexagons(callback){
+	hexValues = [];
+	hexCounter = 0;
 	for(var i = 0; i < geoArray.length; i++){
 		var hexagon = geoArray[i];
 
 		if(hexagon.properties.amount != 0 && hexagon.properties.amount != null){
-			hexagon.properties.class = 'filledHexagons';
+			hexCounter++;
+			hexagon.properties.class = 'filledHexagons Hexnumber' + hexCounter;
 			hexagon.properties.opacity = (hexagon.properties.amount/maxAmount)+0.3;
+			hexValues[hexCounter] = hexagon.properties.amount;
 		}
 
 		if(i === (geoArray.length-1)){

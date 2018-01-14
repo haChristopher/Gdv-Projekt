@@ -11,6 +11,7 @@ var tooltip = d3.select("body").append("div")
 
 var map = L.map('map', {zoomControl: false }).setView([koelnlat, koelnlng], zoom);
 map.scrollWheelZoom.disable();
+map.dragging.disable();
 
 var mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 L.tileLayer(
