@@ -17,8 +17,37 @@
 	</head>
 
 	<body>
-		<div id="map" style="width: 1000px; height: 600px"></div>
-		<svg id="time" width="800px" height= "400px"></svg>
+        <div class="wrapper">
+            <div class="side-left">
+                <div id="map"></div>
+                <svg id="time" width="900px" height="200px"></svg>
+            </div>
+
+            <div class="side-right">
+                <div class="headline">
+                    <img class="weatherImage" src="/images/Rain.svg" />Rain<br />
+                    <img class="weatherImage" src="/images/Breezy.svg" />Breezy<br />
+                    <img class="weatherImage" src="/images/Rain And Snow.svg" />Rain And Snow<br />
+                    <img class="weatherImage" src="/images/Cloudy.svg" />Cloudy<br />
+                    <img class="weatherImage" src="/images/Mostly Cloudy.svg" />Mostly Cloudy<br />
+                    <img class="weatherImage" src="/images/Partly Cloudy.svg" />Partly Cloudy<br />
+                    <img class="weatherImage" src="/images/Scattered Showers.svg" />Scattered Showers<br />
+                    <img class="weatherImage" src="/images/Showers.svg" />Showers<br />
+                    <img class="weatherImage" src="/images/Clear.svg" />Clear<br />
+                    <img class="weatherImage" src="/images/Thermometer.svg" />Thermometer<br />
+                    <img class="weatherImage" src="/images/Celsius.svg" />Celsius<br />
+                </div>
+                <div class="explanation">
+
+                </div>
+                <div class="legend">
+
+                </div>
+                <div class="weather">
+
+                </div>
+            </div>
+        </div>
 
 		<script src="/js/map.js" charset="UTF-8"></script>
 		<script src="/js/drawHexagons.js" charset="UTF-8"></script>

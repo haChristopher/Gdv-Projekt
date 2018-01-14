@@ -1,3 +1,68 @@
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
     background-color: #1b2022;
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.side-left {
+    float: left;
+    height: 100%;
+    width: 70%;
+    margin: 0;
+}
+
+#map {
+    margin:5px 5px 5px 5px;
+    height: 70%;
+}
+
+#time {
+    margin:5px 5px 5px 5px;
+    height: 30%;
+}
+
+.side-right {
+    float: right;
+    height: 100%;
+    width: auto;
+    margin: 0;
+    color: white;
+}
+
+.headline {
+    height: 15%;
+}
+
+.explanation {
+    height: 30%;
+}
+
+.legend {
+    height: 25%;
+}
+
+.weather {
+    margin:5px 5px 5px 5px;
+    height: 30%;
+}
+
+
+
+.weatherImage {
+    height: 50px;
+}
+
+.temp {
+    height: 50px;
+}
+
+.celsius {
+    height: 50px;
 }
