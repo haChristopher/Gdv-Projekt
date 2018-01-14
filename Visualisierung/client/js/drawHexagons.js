@@ -72,7 +72,9 @@ function countBikesInHexagon(bikes, callback){
 		for(var j = 0; j < geoArray.length; j++){
 			var hexagon = geoArray[j];
 
-			if(pointToPolygon(bike.geometry.coordinates, hexagon.geometry.coordinates[0])){
+			var coordinates = [bike.longitude, bike.latitude];
+
+			if(pointToPolygon(coordinates, hexagon.geometry.coordinates[0])){
 				var counter = hexagon.properties;
 				if(counter === null){
 					counter = 1;
@@ -92,7 +94,7 @@ function countBikesInHexagon(bikes, callback){
 }
 
 function pointToPolygon(point, vs) {
-    var x = point[1], y = point[0];
+    var x = point[0], y = point[1];
 
     var inside = false;
     for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {

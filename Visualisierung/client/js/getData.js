@@ -1,44 +1,104 @@
-var url = '/api/bikes';
+var urlTimeframe = '/api/data';
+var urlTotalbikes = '/api/totalbikes';
 var bikesURL = 'data/bikes.geojson';
 
-var startTimestamp = '2017-12-13 05:00:00';
+var startTimestamp = '2017-12-13T06:00:00Z';
+
+var postbody = {
+    'time': startTimestamp
+}
 
 var bikes = null;
+var totalBikes = null;
 
-d3.json(bikesURL, function(jsonBikes){
-    jsonBikes.features.forEach(function(d){
-        d.LatLng = new L.LatLng(d.geometry.coordinates[0], d.geometry.coordinates[1]);
-    })
-
-    bikes = jsonBikes.features;
-
-    drawHexagons(bikes);
-
-    //getData();
-})
-
-function getData(){
+(function getData(){
     async.series([
-        function(callback) {sendRequest(callback);}
+        function(callback) {sendRequestForTotalBikes(callback);},
+        function(callback) {drawGraph(callback)},
+        function(callback) {sendRequestForTimeframe(callback);}
     ], function(err) {
         if (err) {
             console.log(err);
             throw err;
         }
+
+        drawHexagons(bikes);
     }); 
+})();
+
+function sendRequestForTimeframe(callback){
+    bikes = null;
+    $.ajax({
+        url: urlTimeframe,
+        method: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(postbody),
+        success: function(data) {
+            bikes = data.data;
+        },
+        error: function (jqXHR, exception) {
+            var msg = '';
+
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status === 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status === 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n'.concat(jqXHR.responseText);
+            }
+
+            console.log(msg);
+            $('#post').html(msg);
+        }
+    }).done(function() {
+        console.log('Data successfully loaded.');
+
+        callback();
+    });
 }
 
-function sendRequest(callback){
+function sendRequestForTotalBikes(callback){
+    totalBikes = null;
     $.ajax({
-        url: url,
-        method: '',
-        contentType: 'application/json',
-        data: {
-            'time' : startTimestamp
-        },
-        dataType: 'json',
+        url: urlTotalbikes,
+        method: 'GET',
         success: function(data) {
-            console.log(data);
+            totalBikes = data.data;
+
+            var max = 0;
+            var latestTimeStamp = 0;
+
+            for(var i = 0; i < totalBikes.length; i++){
+                var timestamp = totalBikes[i];
+                var date = timestamp.b_time.substring(0,10);
+                var time = timestamp.b_time.substring(11,16);
+
+                timestamp.displayTime = date + ' ' + time;
+                timestamp.date = new Date(timestamp.b_time);
+
+                if(timestamp.total_bikes > max){
+                    max = timestamp.total_bikes;
+                }
+
+                if(i === totalBikes.length){
+                    latestTimeStamp = timestamp.date;
+                }
+            }
+
+            totalBikes.maxTotal = max;
+            totalBikes.latestTimeStamp = latestTimeStamp;
+            totalBikes.earliestTimeStamp = totalBikes[0].date;
+
+            console.log(totalBikes);
         },
         error: function (jqXHR, exception) {
             var msg = '';
