@@ -2,6 +2,9 @@ var graphTooltip = d3.select("body").append("div")
 .attr("class", "graphTooltip")
 .style("opacity", 0);
 
+var index = null;
+var globalMouse = null;
+
 function drawGraph(callback){
   var margin = {top: 10, right: 37, bottom: 20, left: 15};
   var width = parseInt((d3.select('#time').attr('width')).substring(0,4));
@@ -112,11 +115,14 @@ function drawGraph(callback){
             .style('top', (d3.event.pageY - 20) + 'px');
   })
   .on('click', function(){
+    index = 0;
     var mouse = d3.mouse(this);
+    console.log(mouse);
+    globalMouse = mouse;
     var x0 = x.invert(d3.mouse(this)[0]);
-    var i = bisectDate(totalBikes, x0, 0);
-    if(i === totalBikes.length){
-      i--;
+    index = bisectDate(totalBikes, x0, 0);
+    if(index === totalBikes.length){
+      index--;
     }
 
     d3.select('.selected-line')
@@ -127,13 +133,56 @@ function drawGraph(callback){
             return d;
           });
 
-    queryTimestamp = totalBikes[i].b_time;
+    queryTimestamp = totalBikes[index].b_time;
       var postbody = {
         'time': queryTimestamp
       }
 
       initiateHexagons(postbody);
   });
+  
+  d3.select('body').on('keydown', function(){
+    var mouse = d3.mouse(this);
+    console.log(globalMouse);    
+    if(index != null){
+      var mousemovement = 0;
+      var noUpdate = false;
+        if(d3.event.keyCode === 39){
+          if(index === (totalBikes.length-1)){
+          noUpdate = true;
+        }else{
+          index++;
+          mousemovement = globalMouse[0]+1;
+          globalMouse[0]++;
+        }
+      }else if(d3.event.keyCode === 37){
+        if(index === 0){
+          noUpdate = true;
+        }else{
+          index--;
+          mousemovement = globalMouse[0]-1;
+          globalMouse[0]--;
+        }
+      }
+
+      if(!noUpdate){
+        d3.select('.selected-line')
+        .style("opacity", "1")
+            .attr("d", function() {
+              var d = "M" + mousemovement + "," + (height-(margin.top*1.5));
+              d += " " + mousemovement + "," + margin.top;
+              return d;
+            });
+
+      queryTimestamp = totalBikes[index].b_time;
+        var postbody = {
+          'time': queryTimestamp
+        }
+
+        initiateHexagons(postbody);
+      }
+      }
+    });
 
   callback();
 }
