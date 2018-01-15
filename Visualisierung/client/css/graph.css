@@ -3,26 +3,26 @@
 }
 
 .axis path{
-	stroke: #FFFFFF;
+	stroke: #f7f7f7;
 }
 
 .axis{
-	stroke: #FFFFFF;
+	stroke: #f7f7f7;
 }
 
 .tick line{
-	stroke: #FFFFFF;
+	stroke: #f7f7f7;
 }
 
 
 .mouse-line path{
-	stroke: #FFFFFF;
+	stroke: #f7f7f7;
 }
 
 .selected-line path{
-	stroke: #FFFFFF;
+	stroke: #f7f7f7;
 }
 
 .graphBackground {
-	fill: #3c3c3c;
+	fill: #303032;
 }
