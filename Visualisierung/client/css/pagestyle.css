@@ -32,7 +32,6 @@ html, body {
     float: right;
     height: 1080px;
     width: 480px;
-    margin: 0;
     color: #f7f7f7;
 }
 
@@ -40,33 +39,51 @@ html, body {
     margin:10px 0px 10px 10px;
     height: 160px;
     width: 450px;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
     text-align: right;
 }
 
 .hexbikeImage {
-    height: 25px;
+    height: 50px;
 }
 
 .legend {
-    margin: 10px 10px 10px 10px;
+    margin: 10px 0px 10px 10px;
     padding-left: 40px;
+    padding-right: 40px;
     height: 200px;
     width: 450px;
     font-size: 30px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
-    text-align: left;
+    text-align: center;
 }
 
 #legendHeadline {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
     text-align: left;
     padding-bottom: 20px;
+    padding-right: 40px;
+}
+
+.weather svg {
+    margin-top: 80px;
+}
+
+.weather-celcius {
+    font-size: 70px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+}
+
+.weather-text {
+    font-size: 30px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
 }
 
 .legendImage {
@@ -74,7 +91,7 @@ html, body {
 }
 
 .explanation {
-    margin:10px 10px 10px 10px;
+    margin:10px 0px 10px 10px;
     padding-left: 40px;
     height: 350px;
     width: 450px;
@@ -85,14 +102,16 @@ html, body {
 }
 
 p {
+    padding-right: 40px;
     font-size: 20px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
-    text-align: left;
+    text-align: justify;
 }
 
 .weather {
-    margin:10px 10px 10px 10px;
+    margin:10px 0px 10px 0px;
+    padding-left: 40px;
     height: 270px;
     width: 450px;
     padding-top: 30px;
