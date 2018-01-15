@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 
 <html lang="en">
-	<head>
-		<meta charset="UTF-8"/>
-		<title>Visualisierung</title>
 
-        <link rel="stylesheet" href="css/pagestyle.css"/>
-		<link rel="stylesheet" href="css/map.css"/>
-		<link rel="stylesheet" href="css/graph.css"/>
-		<link rel="stylesheet" href="/styles/leaflet.css"/>
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu+Mono" />
+<head>
+	<meta charset="UTF-8" />
+	<title>Visualisierung</title>
 
-		<script src="/scripts/d3.min.js"></script>
-		<script src="/scripts/leaflet.js"></script>
-		<script src="/scripts/jquery.min.js"></script>
-		<script src="scripts/async.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
-	</head>
+	<link rel="stylesheet" href="css/pagestyle.css" />
+	<link rel="stylesheet" href="css/map.css" />
+	<link rel="stylesheet" href="css/graph.css" />
+	<link rel="stylesheet" href="/styles/leaflet.css" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu+Mono" />
 
-	<body>
-        <div class="wrapper">
-            <div class="side-left">
-                <div id="map"></div>
-                <svg id="time" width="1420px" height="270px"></svg>
-            </div>
+	<script src="/scripts/d3.min.js"></script>
+	<script src="/scripts/leaflet.js"></script>
+	<script src="/scripts/jquery.min.js"></script>
+	<script src="scripts/async.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
+</head>
 
-            <div class="side-right">
-                <div class="headline">
-                    Hex-Bike
-                    <img class="hexbikeImage" src="/images/HexBike.png" />
-                </div>
-                <div class="legend">
-                    <div id="legendHeadline">Legende</div>
-                    <img class="legendImage" src="/images/hexagon_empty_grey.png" /> &nbsp;
-                    <img class="legendImage" src="/images/hexagon_slightly_red.png" /> &nbsp;
-                    <img class="legendImage" src="/images/hexagon_full_red.png" /> &nbsp;
-                </div>
-                <div class="explanation">
-                    <!--Explanation text here!-->
-                    <p>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                    </p>
-                    <p>
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                    </p>
-                </div>
-                <div class="weather">
-                    <!-- d3 data -->
-                </div>
-            </div>
-        </div>
+<body>
+	<div class="wrapper">
+		<div class="side-left">
+			<div id="map"></div>
+			<svg id="time" width="1420px" height="270px"></svg>
+		</div>
 
-		<script src="/js/map.js" charset="UTF-8"></script>
-		<script src="/js/drawHexagons.js" charset="UTF-8"></script>
-		<script src="/js/interactWithHexagons.js" charset="UTF-8"></script>
-		<script src="/js/getData.js" charset="UTF-8"></script>
-        <script src="/js/weather.js" charset="UTF-8"></script>
-		<script src="/js/time.js" charset="UTF-8"></script>
-	</body>
+		<div class="side-right">
+			<div class="headline">
+				Hex-Bike
+				<img class="hexbikeImage" src="/images/HexBike.png" />
+			</div>
+			<div class="legend">
+				<div id="legendHeadline">Legende</div>
+				<img class="legendImage" src="/images/hexagon_empty_grey.png" /> &nbsp;
+				<img class="legendImage" src="/images/hexagon_slightly_red.png" /> &nbsp;
+				<img class="legendImage" src="/images/hexagon_full_red.png" /> &nbsp;
+			</div>
+			<div class="explanation">
+				<!--Explanation text here!-->
+				<p>
+					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+				</p>
+				<p>
+					At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+					magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+				</p>
+			</div>
+			<div class="weather">
+				<!-- d3 data -->
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/map.js" charset="UTF-8"></script>
+	<script src="/js/drawHexagons.js" charset="UTF-8"></script>
+	<script src="/js/interactWithHexagons.js" charset="UTF-8"></script>
+	<script src="/js/getData.js" charset="UTF-8"></script>
+	<script src="/js/weather.js" charset="UTF-8"></script>
+	<script src="/js/time.js" charset="UTF-8"></script>
+</body>
+
 </html>
