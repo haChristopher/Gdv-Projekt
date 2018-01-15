@@ -1,18 +1,20 @@
 function drawWeather(callback){
-
-  console.log(bikes[0].b_time);
   var weatherText = bikes[0].w_text;
-  weatherText = "Rain";
   var time = new Date(bikes[0].b_time);
+  var timeString = time.toString();
+
+  var index = timeString.indexOf('G');
+
+  timeString = timeString.substring(0, index-1);
+
   var temp = parseFloat(bikes[0].temp);
   temp = Math.round(temp);
   var imagePath = "./images/" + weatherText + ".svg";
 
 
-  console.log(imagePath);
-
   async.series([
-      function(callback) {drawImages(callback, imagePath, temp, time);}
+      function(callback) {removeOldWeather(callback);},
+      function(callback) {drawImages(callback, imagePath, temp, timeString);}
   ], function(err) {
       if (err) {
           console.log(err);
@@ -51,17 +53,23 @@ function drawImages(callback, imagePath, temp, time){
       .attr("xlink:href", "./images/Celsius.svg")
       .attr("width", 50)
       .attr("height", 50)
-      .attr("x", 240)
+      .attr("x", 260)
       .attr("y", 25);
 
-  var time2 = g.append("text")
+    var time2 = g.append("text")
       .html(time)
       .attr("width", 200)
       .attr("height", 200)
       .style('fill', '#f7f7f7')
       .attr('class', 'weather-text')
-      .attr("x", 15)
+      .attr("x", 0)
       .attr("y", 130);
 
     callback();
+}
+
+function removeOldWeather(callback){
+  d3.selectAll('.weather').select('svg').remove();
+
+  callback();
 }

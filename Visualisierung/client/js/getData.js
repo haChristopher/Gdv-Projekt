@@ -140,5 +140,20 @@ function initiateHexagons(postbody){
         }
 
         console.log('Hexagons built');
+
+        initiateWeather();
+    });
+}
+
+function initiateWeather(){
+    async.series([
+        function(callback) {drawWeather(callback);}
+    ], function(err) {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+
+        console.log('Weather built');
     });
 }

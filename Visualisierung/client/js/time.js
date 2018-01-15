@@ -142,8 +142,7 @@ function drawGraph(callback){
   });
   
   d3.select('body').on('keydown', function(){
-    var mouse = d3.mouse(this);
-    console.log(globalMouse);    
+    var mouse = d3.mouse(this);   
     if(index != null){
       var mousemovement = 0;
       var noUpdate = false;
