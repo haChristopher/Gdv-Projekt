@@ -1,8 +1,8 @@
 var bbox = [minX,minY,maxX,maxY];
-var cellSide = 0.5;
-var options = {units: 'miles'};
+var cellSize = 1;
+var options = {units: 'kilometres'};
 
-var hexgrid = turf.hexGrid(bbox, cellSide, options);
+var hexgrid = turf.hexGrid(bbox, cellSize, options);
 
 var geoArray = [];
 
@@ -45,7 +45,7 @@ function drawHexagons(callback){
 		addToolTip();
 
 		callback();
-    });	
+    });
 }
 
 function createArrayOfHexagons(callback){
@@ -56,8 +56,8 @@ function createArrayOfHexagons(callback){
 		var object = {
 			type: 'Feature',
 			properties: {
-				amount: null, 
-				class: 'hexagons', 
+				amount: null,
+				class: 'hexagons',
 				opacity: null
 			},
 			geometry: geo.geometry
@@ -123,7 +123,18 @@ function colorCodeHexagons(callback){
 		if(hexagon.properties.amount != 0 && hexagon.properties.amount != null){
 			hexCounter++;
 			hexagon.properties.class = 'filledHexagons Hexnumber' + hexCounter;
-			hexagon.properties.opacity = (hexagon.properties.amount/maxAmount)+0.3;
+      var percentage = hexagon.properties.amount / (60.0*cellSize);
+      if (percentage < 0.2) {
+        hexagon.properties.opacity = 0.2 + 0.3 + 1/(cellSize*100);
+      } else if (percentage < 0.4){
+        hexagon.properties.opacity = 0.4 + 0.3 + 1/(cellSize*100);
+      } else if (percentage < 0.6){
+        hexagon.properties.opacity = 0.6 + 0.3 + 1/(cellSize*100);
+      } else if (percentage < 0.8){
+        hexagon.properties.opacity = 0.8 + 0.3 + 1/(cellSize*100);
+      } else {
+        hexagon.properties.opacity = 1 + 0.3 + 1/(cellSize*100);
+      }
 			hexValues[hexCounter] = hexagon.properties.amount;
 		}
 
