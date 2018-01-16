@@ -45,7 +45,7 @@ function drawHexagons(callback){
 		addToolTip();
 
 		callback();
-    });	
+    });
 }
 
 function createArrayOfHexagons(callback){
@@ -56,8 +56,8 @@ function createArrayOfHexagons(callback){
 		var object = {
 			type: 'Feature',
 			properties: {
-				amount: null, 
-				class: 'hexagons', 
+				amount: null,
+				class: 'hexagons',
 				opacity: null
 			},
 			geometry: geo.geometry
