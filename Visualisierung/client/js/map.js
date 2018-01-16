@@ -37,5 +37,11 @@ L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{
 	minZoom: 12
 }).addTo(map);
 
+//suppress keyboard events on map
+document.querySelector("#map").addEventListener("keydown", function(event) {
+         event.preventDefault();
+         event.stopPropagation();
+}, false);
+
 var svgLayer = L.svg();
 svgLayer.addTo(map);
