@@ -7,8 +7,8 @@
 
 .filledHexagons {
 	fill: #F05E5F;
-    stroke: #F05E5F;
-    stroke-width: 1;
+    stroke: lightsalmon;
+    stroke-width: 2;
 }
 
 .line{
