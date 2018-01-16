@@ -125,15 +125,15 @@ function colorCodeHexagons(callback){
 			hexagon.properties.class = 'filledHexagons Hexnumber' + hexCounter;
       var percentage = hexagon.properties.amount / (60.0*cellSize);
       if (percentage < 0.2) {
-        hexagon.properties.opacity = 0.2 + 0.3 + 1/(cellSize*100);
+        hexagon.properties.opacity = 0.25;
       } else if (percentage < 0.4){
-        hexagon.properties.opacity = 0.4 + 0.3 + 1/(cellSize*100);
+        hexagon.properties.opacity = 0.45;
       } else if (percentage < 0.6){
-        hexagon.properties.opacity = 0.6 + 0.3 + 1/(cellSize*100);
+        hexagon.properties.opacity = 0.65;
       } else if (percentage < 0.8){
-        hexagon.properties.opacity = 0.8 + 0.3 + 1/(cellSize*100);
+        hexagon.properties.opacity = 0.85;
       } else {
-        hexagon.properties.opacity = 1 + 0.3 + 1/(cellSize*100);
+        hexagon.properties.opacity = 1;
       }
 			hexValues[hexCounter] = hexagon.properties.amount;
 		}
