@@ -8,9 +8,8 @@ function drawWeather(callback){
   timeString = timeString.substring(0, index-1);
 
   var temp = parseFloat(bikes[0].temp);
-  temp = Math.round(temp);
+  temp = Math.round(temp) + " °C";
   var imagePath = "./images/" + weatherText + ".svg";
-
 
   async.series([
       function(callback) {removeOldWeather(callback);},
@@ -28,7 +27,7 @@ function drawImages(callback, imagePath, temp, time){
 
   var svg = d3.select(".weather").append("svg")
       .attr("width", 500)
-      .attr("height", 500);
+      .attr("height", 170);
 
   var g = svg.append("g");
 
@@ -49,12 +48,20 @@ function drawImages(callback, imagePath, temp, time){
       .attr("x", 180)
       .attr("y", 70);
 
-  var celsius = g.append("svg:image")
-      .attr("xlink:href", "./images/Celsius.svg")
-      .attr("width", 50)
-      .attr("height", 50)
-      .attr("x", 260)
-      .attr("y", 25);
+  // var celsius = g.append("svg:image")
+  //     .attr("xlink:href", "./images/Celsius.svg")
+  //     .attr("width", 50)
+  //     .attr("height", 50)
+  //     .attr("x", 260)
+  //     .attr("y", 25);
+  // var celsius = g.append("text")
+  //     .html(unit)
+  //     .attr("width", 50)
+  //     .attr("height", 50)
+  //     .style('fill', '#f7f7f7')
+  //     .attr('class', 'weather-celcius')
+  //     .attr("x", 260)
+  //     .attr("y", 25);
 
     var time2 = g.append("text")
       .html(time)

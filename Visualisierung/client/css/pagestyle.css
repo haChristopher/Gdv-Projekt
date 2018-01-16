@@ -37,6 +37,7 @@ html, body {
 
 .headline {
     margin:10px 0px 10px 10px;
+    padding-right: 40px;
     height: 160px;
     width: 450px;
     font-size: 50px;
@@ -70,22 +71,6 @@ html, body {
     padding-right: 40px;
 }
 
-.weather svg {
-    margin-top: 80px;
-}
-
-.weather-celcius {
-    font-size: 70px;
-    font-weight: lighter;
-    font-family: Ubuntu Mono;
-}
-
-.weather-text {
-    font-size: 30px;
-    font-weight: lighter;
-    font-family: Ubuntu Mono;
-}
-
 .legendImage {
     height: 75px;
 }
@@ -93,7 +78,7 @@ html, body {
 .explanation {
     margin:10px 0px 10px 10px;
     padding-left: 40px;
-    height: 350px;
+    height: 360px;
     width: 450px;
     font-size: 30px;
     font-weight: lighter;
@@ -109,10 +94,24 @@ p {
     text-align: justify;
 }
 
+.buttons {
+    margin: 10px 0px 10px 0px;
+    padding-top: 10px;
+    padding-left: 40px;
+    height: 70px;
+    width: 450px;
+    padding-top: 30px;
+    text-align: left;
+}
+
+#buttonPlayPause, #buttonForwards, #buttonBackwards, #buttonStop {
+    height: 70px;
+}
+
 .weather {
     margin:10px 0px 10px 0px;
     padding-left: 40px;
-    height: 270px;
+    height: 190px;
     width: 450px;
     padding-top: 30px;
     text-align: left;
@@ -122,8 +121,16 @@ p {
     height: 75px;
 }
 
-.logos {
-    height: 70px;
+.weather-celcius {
+    font-size: 70px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+}
+
+.weather-text {
+    font-size: 30px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
 }
 
 .temperature {
