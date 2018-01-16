@@ -27,7 +27,7 @@ router.post('/data', function (req, res) {
     console.log(req.body);
     var timestamp = req.body.time;
     connection.query('SELECT * FROM bike_location_total_weather_by_time WHERE b_time = ' +
-                      mysql.escape(timestamp), function (error, results) {
+                      mysql.escape(timestamp) +  ' ORDER BY b_time', function (error, results) {
         if (error) {
             throw error;
         } else {
@@ -40,7 +40,7 @@ router.post('/data', function (req, res) {
 
 /* get weather from database */
 router.get('/totalbikes', function (req, res) {
-    connection.query('SELECT * FROM totalbikes', function (error, results) {
+    connection.query('SELECT * FROM totalbikes ORDER BY b_time', function (error, results) {
         if (error) {
             throw error;
         } else {
@@ -52,7 +52,7 @@ router.get('/totalbikes', function (req, res) {
 
 /* get weather from database */
 router.get('/weatherhourly', function (req, res) {
-    connection.query('SELECT * FROM weatherhourly', function (error, results) {
+    connection.query('SELECT * FROM weatherhourly ORDER BY w_time', function (error, results) {
         if (error) {
             throw error;
         } else {
@@ -64,7 +64,7 @@ router.get('/weatherhourly', function (req, res) {
 
 /* get all bikes from database */
 router.get('/bikes', function (req, res) {
-    connection.query('SELECT * FROM bikes', function (error, results) {
+    connection.query('SELECT * FROM bikes ORDER BY b_time', function (error, results) {
         if (error) {
             throw error;
         } else {
