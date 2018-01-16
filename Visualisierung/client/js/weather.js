@@ -1,10 +1,12 @@
 function drawWeather(callback){
   var weatherText = bikes[0].w_text;
-  var time = new Date(bikes[0].b_time);
-  var timeString = time.toString();
 
+  var now = new Date(bikes[0].b_time);
+  var timeUTC = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
+                         now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+
+  var timeString = timeUTC.toString();
   var index = timeString.indexOf('G');
-
   timeString = timeString.substring(0, index-1);
 
   var temp = parseFloat(bikes[0].temp);
