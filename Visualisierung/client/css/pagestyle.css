@@ -125,6 +125,7 @@ p {
     font-size: 70px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
+    letter-spacing: -8px;
 }
 
 .weather-text {
