@@ -21,8 +21,12 @@
 <body>
     <div class="wrapper">
         <div class="side-left">
-            <div id="map"></div>
-            <svg id="time" width="1420px" height="270px"></svg>
+            <div id="map">
+                <div class="cityName">
+                    Karte von Köln&nbsp;
+                </div>
+            </div>
+            <svg id="time" width="1430px" height="270px"></svg>
         </div>
 
         <div class="side-right">
@@ -32,9 +36,12 @@
             </div>
             <div class="legend">
                 <div id="legendHeadline">Legende</div>
-                        <img class="legendImage" src="/images/hexagon_empty_grey.png" /> &nbsp;
-                        <img class="legendImage" src="/images/hexagon_slightly_red.png" /> &nbsp;
-                        <img class="legendImage" src="/images/hexagon_full_red.png" /> &nbsp;
+                <img class="legendImage" id="legend0" src="/images/legend0.png" />
+                <img class="legendImage" id="legend1" src="/images/legend1.png" />
+                <img class="legendImage" id="legend2" src="/images/legend2.png" />
+                <img class="legendImage" id="legend3" src="/images/legend3.png" />
+                <img class="legendImage" id="legend4" src="/images/legend4.png" />
+                <img class="legendImage" id="legend5" src="/images/legend5.png" />
             </div>
             <div class="explanation">
                 <!--Explanation text here!-->
@@ -42,14 +49,15 @@
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </p>
                 <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    Sie können einzelne Datensätze über das Zeitdiagramm auswählen.
                 </p>
             </div>
             <div class="buttons">
                 <img id="buttonBackwards" src="/images/buttonBackwards.png" />
-                <img id="buttonPlayPause" src="/images/buttonPlayPause.png" />
+                <img id="buttonPlay" src="/images/buttonPlay.png" />
+                <img id="buttonPause" src="/images/buttonPause.png" />
                 <img id="buttonForwards" src="/images/buttonForwards.png" />
-                <img id="buttonStop" src="/images/buttonStop.png" />
+                <img id="buttonReturn" src="/images/buttonReturn.png" />
             </div>
 			<div class="weather">
 				<!-- d3 data -->

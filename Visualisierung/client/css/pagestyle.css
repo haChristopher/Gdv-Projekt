@@ -39,17 +39,22 @@ html, body, .wrapper {
     height: 780px;
 }
 
+/*height and width of element has to be changed at index.html (svg element)*/
 #time {
     height: 270px;
 }
 
 /*RIGHT SIDE*/
 .side-right {
-    width: 480px;
+    width: 470px;
+    margin-right: 10px;
 }
 
 .headline, .legend, .explanation, .buttons, .weather {
-    width: 450px;
+    width: 430px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .headline {
@@ -79,11 +84,22 @@ html, body, .wrapper {
 }
 
 #map {
-    margin:10px 10px 10px 10px;
+    margin: 10px 0px 5px 10px;
+}
+
+.cityName {
+    position: absolute;
+    font-size: 25px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+    color: #f05e5f;
+    background-color: #242b2d;
+    z-index: 401;
+    top: 752px;
 }
 
 #time {
-    margin:0px 10px 10px 10px;
+    margin: 5px 0px 10px 10px;
 }
 
 .side-right {
@@ -92,9 +108,8 @@ html, body, .wrapper {
 }
 
 .headline {
-    margin:10px 0px 10px 10px;
-    padding-right: 40px;
-    font-size: 50px;
+    padding-right: 10px;
+    font-size: 55px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
     text-align: right;
@@ -105,31 +120,25 @@ html, body, .wrapper {
 }
 
 .legend {
-    margin: 10px 0px 10px 10px;
-    padding-left: 40px;
-    padding-right: 40px;
     font-size: 30px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
-    text-align: center;
+    text-align: left;
 }
 
 #legendHeadline {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
     text-align: left;
     padding-bottom: 20px;
-    padding-right: 40px;
 }
 
 .legendImage {
-    height: 75px;
+    height: 40px;
 }
 
 .explanation {
-    margin:10px 0px 10px 10px;
-    padding-left: 40px;
     font-size: 30px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
@@ -137,7 +146,6 @@ html, body, .wrapper {
 }
 
 p {
-    padding-right: 40px;
     font-size: 20px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
@@ -145,20 +153,16 @@ p {
 }
 
 .buttons {
-    margin: 10px 0px 10px 0px;
-    padding-top: 10px;
-    padding-left: 40px;
     padding-top: 30px;
     text-align: left;
 }
 
-#buttonPlayPause, #buttonForwards, #buttonBackwards, #buttonStop {
+#buttonPlay, #buttonPause, #buttonForwards, #buttonBackwards, #buttonReturn {
     height: 70px;
+    margin-right: 10px;
 }
 
 .weather {
-    margin:10px 0px 10px 0px;
-    padding-left: 40px;
     padding-top: 30px;
     text-align: left;
 }
