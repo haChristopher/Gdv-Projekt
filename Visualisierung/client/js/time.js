@@ -23,7 +23,8 @@ function drawGraph(callback){
 
   var valueline = d3.line()
       .x(function(d) { return x(d.date); })
-      .y(function(d) { return y(parseInt(d.total_bikes)); });
+      .y(function(d) { return y(parseInt(d.total_bikes)); })
+      .defined(function(d) { return parseInt(d.total_bikes) != 0;});
 
   var svg = d3.select('#time')
     .append("g")
@@ -110,9 +111,9 @@ function drawGraph(callback){
             .duration(200)
             .style('opacity', .9);
 
-        graphTooltip.html(totalBikes[i].displayTime + ' Uhr</strong>')
-            .style('left', (d3.event.pageX + 15) + 'px')
-            .style('top', (d3.event.pageY + 15) + 'px');
+        graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong>')
+            .style('left', (d3.event.pageX - 75) + 'px')
+            .style('top', (d3.event.pageY - 20) + 'px');
   })
   .on('click', function(){
     index = 0;
