@@ -80,7 +80,7 @@ function drawGraph(callback){
       .attr('fill', 'none')
       .attr('pointer-events', 'all')
       .attr('x', margin.left*2);
-      
+
   verticalLine.on('mouseout', function() { // on mouse out hide line, circles and text
         d3.select('.mouse-line')
           .style("opacity", "0");
@@ -110,9 +110,9 @@ function drawGraph(callback){
             .duration(200)
             .style('opacity', .9);
 
-        graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong>')
-            .style('left', (d3.event.pageX - 75) + 'px')
-            .style('top', (d3.event.pageY - 20) + 'px');
+        graphTooltip.html(totalBikes[i].displayTime + ' Uhr</strong>')
+            .style('left', (d3.event.pageX + 15) + 'px')
+            .style('top', (d3.event.pageY + 15) + 'px');
   })
   .on('click', function(){
     index = 0;
@@ -140,9 +140,9 @@ function drawGraph(callback){
 
       initiateHexagons(postbody);
   });
-  
+
   d3.select('body').on('keydown', function(){
-    var mouse = d3.mouse(this);   
+    var mouse = d3.mouse(this);
     if(index != null){
       var mousemovement = 0;
       var noUpdate = false;
