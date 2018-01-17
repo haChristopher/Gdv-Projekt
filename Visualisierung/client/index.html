@@ -31,7 +31,7 @@
                 <!--Area above graph-->
                 <span id="graphTagBikes">Anzahl freie Fahrräder</span>
                 <span id="graphTagTemp">Temperatur</span>
-                <span id="graphTagDate">Datum</span>
+                <!-- <span id="graphTagDate">Datum</span> -->
             </div>
             <svg id="time" width="1430px" height="250px"></svg>
         </div>
@@ -42,19 +42,20 @@
                 <img class="hexbikeImage" src="/images/HexBike.png" />
             </div>
             <div class="explanation">
-                <!--Explanation text here!-->
                 <p>
-                    Vom 13.12.2017 bis 13.01.2018 wurden, zur Untersuchung der nextbike-Nutzung in Köln rund um die Weihnachtsfeiertage, Daten erhoben. Diese sind in dieser Visualisierung auf stündlicher Basis dargestellt.
+                    Der Bike Sharing Anbieter nextbike ist bereits seit 2015 in Köln auf dem Markt und bietet 1450 Fahrräder an.
                 </p>
                 <p>
-                    Einzelne Datensätze können mit Klick auf das Zeitdiagramm ausgewählt werden. Zur Ansicht eines zeitlichen Verlaufs, dienen die Media-Buttons im unteren Bereich.
+                    Zur Untersuchung wie die Fahrradnutzung rund um die Weihnachtszeit aussieht, werden die verfügbaren Fahrräder vom 13.12.2017 bis 13.01.2018 in hexagonalen Regionen angezeigt. Je intensiver das Hexagon dabei leuchtet, desto mehr Fahrräder sind in diesem
+                    Bereich verfügbar.
                 </p>
                 <p>
-
+                    Das Zeitdiagramm zeigt die Gesamtanzahl der verfügbaren Fahrräder und die Temperatur im stündlichen Verlauf an. Das heißt, je niedriger der Graph, desto mehr Menschen haben die Fahrräder zu diesem Zeitpunkt genutzt. Über den Graphen und den Media-Buttons
+                    lässt sich jeder beliebige Zeitpunkt auswählen und näher betrachten.
                 </p>
             </div>
             <div class="legend">
-                <div id="legendHeadline">Legende</div>
+                <div id="legendHeadline"></div> <!--Legend headline not used right now-->
                 <div id="legendBikesText">
                     Anzahl freie Fahrräder
                 </div>
@@ -65,12 +66,23 @@
                 <img class="legendImage" id="legend4" src="/images/legend4.png" />
                 <img class="legendImage" id="legend5" src="/images/legend5.png" />
             </div>
+            <div class="legendGraph">
+                <div id="graphBikes">
+                    <img class="graphImage" id="legend0" src="/images/lineRed.png" />
+                    <span>Anzahl freie Fahrräder</span>
+                </div>
+                <div id="graphTemp">
+                    <img class="graphImage" id="legend0" src="/images/lineBlue.png" />
+                    <span>Temperatur</span>
+                </div>
+            </div>
             <div class="buttons">
                 <img id="buttonBackwards" src="/images/buttonBackwards.png" alt="backwards" />
                 <img id="buttonPlayOrPause" src="/images/buttonPlay.png" alt="play" />
                 <img id="buttonForwards" src="/images/buttonForwards.png" alt="forwards" />
                 <img id="buttonReturn" src="/images/buttonReturn.png" alt="return" />
             </div>
+
 			<div class="weather">
 				<!-- d3 data -->
 			</div>
