@@ -187,7 +187,7 @@ var pausePushed = false;
         'time': queryTimestamp
       }
 
-      initiateHexagons(postbody);
+      redrawHexagons(postbody);
   });
 
   d3.select('body').on('keydown', function(){
@@ -229,7 +229,7 @@ forwardsButton = d3.select('#buttonForwards');
 
                 var mousemovement = 0;
                 var noUpdate = false;
-                  
+
                 if(index === (totalBikes.length-1)){
                     pausePushed = true;
                     playPushed = false;

@@ -9,7 +9,7 @@ hexagonElements.on('mouseover', function() {
 
     var hexNumber = hexClass.substring(indexBeforeNumber+1, hexClass.length);
     var hexAmount = hexValues[hexNumber];
-
+    
     tooltip.transition()
         .duration(200)
         .style('opacity', .9);

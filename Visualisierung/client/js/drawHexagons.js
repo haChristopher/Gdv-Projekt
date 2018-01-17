@@ -36,11 +36,7 @@ function drawHexagons(callback){
 		}).addTo(map);
 
 		allHexagons.eachLayer(function (hexagon) {
-			if(hexagon._path.classList[0] === 'filledHexagons'){
 				hexagon._path.id = 'hexagon';
-			}else{
-				hexagon._path.id = 'greyHexagon';
-			}
 		});
 
 		addToolTip();
@@ -58,8 +54,10 @@ function createArrayOfHexagons(callback){
 			type: 'Feature',
 			properties: {
 				amount: null,
-				class: 'hexagons',
-				opacity: null
+				class: 'unfilledHexagons',
+				opacity: null,
+        stroke: null,
+        strokeWidth: null
 			},
 			geometry: geo.geometry
 		}
@@ -123,7 +121,7 @@ function colorCodeHexagons(callback){
 
 		if(hexagon.properties.amount != 0 && hexagon.properties.amount != null){
 			hexCounter++;
-			hexagon.properties.class = 'filledHexagons Hexnumber' + hexCounter;
+			//hexagon.properties.class = 'filledHexagons Hexnumber';
       var percentage = hexagon.properties.amount / (60.0*cellSize);
       if (percentage < 0.2) {
         hexagon.properties.opacity = 0.3;
@@ -137,7 +135,16 @@ function colorCodeHexagons(callback){
         hexagon.properties.opacity = 1;
       }
 			hexValues[hexCounter] = hexagon.properties.amount;
-		}
+      hexagon.properties.stroke = 'lightsalmon';
+      hexagon.properties.strokeWidth = 2;
+      hexagon.properties.fill = '#F05E5F';
+    } else {
+      hexagon.properties.stroke = '#818286';
+      hexagon.properties.strokeWidth = 1;
+      hexagon.properties.opacity = 0.3;
+      hexagon.properties.fill = '#818286';
+      hexValues[i] = hexagon.properties.amount;
+    }
 
 		if(i === (geoArray.length-1)){
 			callback();
@@ -162,7 +169,6 @@ function getMaxAmount(callback){
 
 function removeOldHexagons(callback){
 	d3.selectAll('#hexagon').remove();
-	d3.selectAll('#greyHexagon').remove();
 
 	callback();
 }
@@ -249,4 +255,55 @@ function drawLegend(callback) {
         .attr('id', 'legend5Text');
 
     callback();
+}
+
+//update hexagons
+function updateHexagons(callback){
+    async.series([
+        function(callback) {createArrayOfHexagons(callback);},
+        function(callback) {countBikesInHexagon(bikes, callback);},
+        function(callback) {getMaxAmount(callback);},
+        function(callback) {colorCodeHexagons(callback);},
+    ], function(err) {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+
+      allHexagons = L.geoJSON(geoArray, {
+  			style: function(hexagon){
+  				var hexStyle = {
+  					fillOpacity: hexagon.properties.opacity,
+  					className: hexagon.properties.class
+  				};
+  				return hexStyle;
+  			}
+  		});
+/*
+		allHexagons.eachLayer(function (hexagon) {
+			if(hexagon._path.classList[0] === 'filledHexagons'){
+				hexagon._path.id = 'hexagon';
+			}else{
+				hexagon._path.id = 'greyHexagon';
+			}
+		});*/
+
+    refreshLayer();
+    addToolTip();
+		callback();
+    });
+}
+
+function refreshLayer() {
+      var hexas = [];
+      hexas = d3.selectAll('#hexagon');
+        for (var i = 0; i < geoArray.length; i++) {
+          hexagon = geoArray[i];
+          hexas._groups[0][i].style.opacity = hexagon.properties.opacity;
+          hexas._groups[0][i].style.fill = hexagon.properties.fill;
+          hexas._groups[0][i].style.stroke = hexagon.properties.stroke;
+          hexas._groups[0][i].style.strokeWidth = hexagon.properties.strokeWidth;
+          //console.log(hexas._groups[0][i].style.strokeWidth);
+        }
+
 }

@@ -13,7 +13,7 @@ var weather = null;
     var postbody = {
         'time': queryTimestamp
     }
-    
+
     async.series([
         function(callback) {sendRequestForTotalBikes(callback);},
         function(callback) {sendRequestForTemperature(callback);},
@@ -183,6 +183,7 @@ function sendRequestForTemperature(callback){
 }
 
 function initiateHexagons(postbody){
+  debugger;
     async.series([
         function(callback) {sendRequestForTimeframe(postbody, callback);},
         function(callback) {drawHexagons(callback);}
@@ -191,6 +192,22 @@ function initiateHexagons(postbody){
             console.log(err);
             throw err;
         }
+
+        initiateWeather();
+    });
+}
+
+function redrawHexagons(postbody){
+    async.series([
+        function(callback) {sendRequestForTimeframe(postbody, callback);},
+        function(callback) {updateHexagons(callback);}
+    ], function(err) {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+
+        console.log('Hexagons built');
 
         initiateWeather();
     });
