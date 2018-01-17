@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>Visualisierung</title>
+	<title>Hex-Bike</title>
 
 	<link rel="stylesheet" href="css/pagestyle.css" />
 	<link rel="stylesheet" href="css/map.css" />
@@ -27,7 +27,13 @@
                     Karte von Köln&nbsp;
                 </div>
             </div>
-            <svg id="time" width="1430px" height="270px"></svg>
+            <div id="aboveTime">
+                <!--Area above graph-->
+                <span id="graphTagBikes">Anzahl freie Fahrräder</span>
+                <span id="graphTagTemp">Temperatur</span>
+                <span id="graphTagDate">Datum</span>
+            </div>
+            <svg id="time" width="1430px" height="250px"></svg>
         </div>
 
         <div class="side-right">
@@ -50,7 +56,7 @@
             <div class="legend">
                 <div id="legendHeadline">Legende</div>
                 <div id="legendBikesText">
-                    Anzahl Fahrräder
+                    Anzahl freie Fahrräder
                 </div>
                 <img class="legendImage" id="legend0" src="/images/legend0.png" />
                 <img class="legendImage" id="legend1" src="/images/legend1.png" />
@@ -72,7 +78,7 @@
         <!-- end wrapper -->
 	</div>
 
-  <script src="/js/external/turf.min.js"></script>
+    <script src="/js/external/turf.min.js"></script>
 	<script src="/js/map.js" charset="UTF-8"></script>
 	<script src="/js/drawHexagons.js" charset="UTF-8"></script>
 	<script src="/js/interactWithHexagons.js" charset="UTF-8"></script>
