@@ -4,12 +4,12 @@
          ___________________________________________
         |   left side             |   right side    |
         |                         |______headline___|
-        |                         |      legend     |
-        |      map                |_________________|
         |                         |                 |
-height  |                         |      explanation|
+        |      map                |      explanation|
+        |                         |_________________|
+height  |                         |      legend     |
         |_________________________|_________________|
-        |                         |______buttons____|
+        |______aboveTime__________|______buttons____|
         |      time               |      weather    |
         |___________________________________________|
 */
@@ -39,9 +39,13 @@ html, body, .wrapper {
     height: 780px;
 }
 
+#aboveTime {
+    height: 20px;
+}
+
 /*height and width of element has to be changed at index.html (svg element)*/
 #time {
-    height: 270px;
+    height: 250px;
 }
 
 /*RIGHT SIDE*/
@@ -61,12 +65,12 @@ html, body, .wrapper {
     height: 160px;
 }
 
-.legend {
-    height: 200px;
-}
-
 .explanation {
     height: 360px;
+}
+
+.legend {
+    height: 200px;
 }
 
 .buttons {
@@ -76,7 +80,6 @@ html, body, .wrapper {
 .weather {
     height: 190px;
 }
-
 /*GLOBAL SETTINGS END*/
 
 .wrapper {
@@ -84,7 +87,7 @@ html, body, .wrapper {
 }
 
 #map {
-    margin: 10px 0px 5px 10px;
+    margin: 10px 0px 10px 10px;
 }
 
 .cityName {
@@ -98,8 +101,36 @@ html, body, .wrapper {
     top: 735px;
 }
 
+#aboveTime {
+    margin: 0px 0px 0px 10px;
+    background-color: #303032;
+}
+
+#graphTagBikes, #graphTagTemp, #graphTagDate {
+    position: absolute;
+    color: #f7f7f7;
+    font-size: 18px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+    z-index: 401;
+}
+
+#graphTagBikes {
+    top: 805px;
+}
+
+#graphTagTemp {
+    top: 805px;
+    left: 1350px;
+}
+
+#graphTagDate {
+    top: 1028px;
+    left: 45px;
+}
+
 #time {
-    margin: 5px 0px 10px 10px;
+    margin: 0px 0px 10px 10px;
 }
 
 .side-right {
@@ -117,6 +148,20 @@ html, body, .wrapper {
 
 .hexbikeImage {
     height: 50px;
+}
+
+.explanation {
+    font-size: 30px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+    text-align: left;
+}
+
+p {
+    font-size: 20px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+    text-align: justify;
 }
 
 .legend {
@@ -177,20 +222,6 @@ html, body, .wrapper {
 
 #legend5Text {
     padding-left: 23px;
-}
-
-.explanation {
-    font-size: 30px;
-    font-weight: lighter;
-    font-family: Ubuntu Mono;
-    text-align: left;
-}
-
-p {
-    font-size: 20px;
-    font-weight: lighter;
-    font-family: Ubuntu Mono;
-    text-align: justify;
 }
 
 .buttons {
