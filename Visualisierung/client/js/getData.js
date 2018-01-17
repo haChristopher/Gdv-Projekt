@@ -63,7 +63,7 @@ function sendRequestForTimeframe(postbody, callback){
             $('#post').html(msg);
         }
     }).done(function() {
-        console.log('Data successfully loaded.');
+        console.log('Bikes successfully loaded.');
 
         callback();
     });
@@ -93,17 +93,12 @@ function sendRequestForTotalBikes(callback){
                     max = timestamp.total_bikes;
                 }
 
-                // if(timestamp.temperature > max){
-                //     maxTemp = timestamp.temperature;
-                // }
-
                 if(i === totalBikes.length){
                     latestTimeStamp = timestamp.date;
                 }
             }
 
             totalBikes.maxTotal = max;
-            // totalBikes.maxTemperatur = maxTemperature;
             totalBikes.latestTimeStamp = latestTimeStamp;
             totalBikes.earliestTimeStamp = totalBikes[0].date;
         },
@@ -130,7 +125,7 @@ function sendRequestForTotalBikes(callback){
             $('#post').html(msg);
         }
     }).done(function() {
-        console.log('Data successfully loaded.');
+        console.log('Total bikes successfully loaded.');
 
         callback();
     });
@@ -143,8 +138,6 @@ function sendRequestForTemperature(callback){
         method: 'GET',
         success: function(data) {
             weather = data.data;
-
-            
 
             var maxTemp = 0;
 
@@ -183,7 +176,7 @@ function sendRequestForTemperature(callback){
             $('#post').html(msg);
         }
     }).done(function() {
-        console.log('Data successfully loaded.');
+        console.log('Weather successfully loaded.');
 
         callback();
     });
@@ -199,8 +192,6 @@ function initiateHexagons(postbody){
             throw err;
         }
 
-        console.log('Hexagons built');
-
         initiateWeather();
     });
 }
@@ -213,7 +204,5 @@ function initiateWeather(){
             console.log(err);
             throw err;
         }
-
-        console.log('Weather built');
     });
 }

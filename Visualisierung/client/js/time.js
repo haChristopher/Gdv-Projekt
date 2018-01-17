@@ -8,6 +8,14 @@ var startMouse = [30, 46];
 var globalMouse = [30, 46];
 
 function drawGraph(callback){
+  jQuery.fn.d3Click = function () {
+  this.each(function (i, e) {
+    var evt = new MouseEvent("click");
+    e.dispatchEvent(evt);
+  });
+};
+
+
   var margin = {top: 10, right: 37, bottom: 20, left: 15};
   var width = parseInt((d3.select('#time').attr('width')).substring(0,4));
   var height = parseInt((d3.select('#time').attr('height')).substring(0,4));
@@ -151,7 +159,7 @@ var pausePushed = false;
             .duration(200)
             .style('opacity', .9);
 
-        graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong></br></br><strong>Unoccupied bikes:</br><strong>' + totalBikes[i].total_bikes + '</strong>')
+        graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong></br></br><strong>Freie Fahrräder:</br><strong>' + totalBikes[i].total_bikes + '</strong></br></br><strong>Temperatur:</br><strong>' + weather[i].temperature + '</strong>')
             .style('left', (d3.event.pageX + 10) + 'px')
             .style('top', (d3.event.pageY - 60) + 'px');
   })
@@ -183,46 +191,14 @@ var pausePushed = false;
   });
 
   d3.select('body').on('keydown', function(){
-    var mouse = d3.mouse(this);
-      var mousemovement = 0;
-      var noUpdate = false;
-        if(d3.event.keyCode === 39){
-          playPushed = false;
-          pausePushed = true;
-          if(index === (totalBikes.length-1)){
-          noUpdate = true;
-        }else{
-          index++;
-          mousemovement = globalMouse[0]+1;
-          globalMouse[0]++;
-        }
+      if(d3.event.keyCode === 39){
+        $("#buttonForwards").d3Click();
       }else if(d3.event.keyCode === 37){
-        playPushed = false;
-          pausePushed = true;
-        if(index === 0){
-          noUpdate = true;
-        }else{
-          index--;
-          mousemovement = globalMouse[0]-1;
-          globalMouse[0]--;
-        }
-      }
-
-      if(!noUpdate){
-        d3.select('.selected-line')
-        .style("opacity", "1")
-            .attr("d", function() {
-              var d = "M" + mousemovement + "," + (height-(margin.top*1.5));
-              d += " " + mousemovement + "," + margin.top;
-              return d;
-            });
-
-      queryTimestamp = totalBikes[index].b_time;
-        var postbody = {
-          'time': queryTimestamp
-        }
-
-        initiateHexagons(postbody);
+        $("#buttonBackwards").d3Click();
+      }else if(d3.event.keyCode === 32){
+          $("#buttonPlayOrPause").d3Click();
+      }else if(d3.event.keyCode === 82){
+        $("#buttonReturn").d3Click();
       }
     });
 
