@@ -171,20 +171,6 @@ function calculateSize(x){
    return ((60 * cellSize)/100 * x *100);
 }
 
-// function drawLegend(callback){
-//  var ranges = [ 0 + " - " + calculateSize(0.2),
-//                calculateSize(0.2) + " - " + calculateSize(0.4),
-//                calculateSize(0.4) + " - " + calculateSize(0.6),
-//                calculateSize(0.6) + " - " + calculateSize(0.8),
-//                calculateSize(0.8) + " - " + calculateSize(1)];
-//
-//  var ul = d3.select('.legend').append('ul');
-//
-//  ul.selectAll('p')
-//  .html();
-//
-//  callback();
-
 function drawLegend(callback) {
     var ranges = [1 + " - " + calculateSize(0.2),
         calculateSize(0.2) + " - " + calculateSize(0.4),
@@ -193,8 +179,9 @@ function drawLegend(callback) {
         calculateSize(0.8) + " - " + calculateSize(1)
     ];
 
-    var yCoordAll = 50;
+    d3.selectAll('.legendText').remove();
 
+    var yCoordAll = 50;
     var svg = d3.select('.legend')
         .append('div')
         .attr('class', 'legendText')

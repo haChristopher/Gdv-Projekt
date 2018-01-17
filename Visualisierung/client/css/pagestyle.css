@@ -198,7 +198,7 @@ p {
     text-align: left;
 }
 
-#buttonPlay, #buttonPause, #buttonForwards, #buttonBackwards, #buttonReturn {
+#buttonPlayOrPause, #buttonForwards, #buttonBackwards, #buttonReturn {
     height: 70px;
     margin-right: 10px;
 }
