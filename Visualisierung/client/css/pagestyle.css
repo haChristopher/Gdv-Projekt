@@ -89,13 +89,13 @@ html, body, .wrapper {
 
 .cityName {
     position: absolute;
-    font-size: 25px;
+    font-size: 40px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
     color: #f05e5f;
     background-color: #242b2d;
     z-index: 401;
-    top: 752px;
+    top: 737px;
 }
 
 #time {
@@ -134,8 +134,49 @@ html, body, .wrapper {
     padding-bottom: 20px;
 }
 
+#legendBikesText {
+    margin-top: 8px;
+    padding-bottom: 10px;
+    padding-left: 13px;
+    font-size: 20px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+    text-align: left;
+}
+
 .legendImage {
     height: 40px;
+    padding-left: 10px;
+}
+
+.legendText {
+    font-size: 12px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+}
+
+#legend0Text {
+    padding-left: 28px;
+}
+
+#legend1Text {
+    padding-left: 44px;
+}
+
+#legend2Text {
+    padding-left: 26px;
+}
+
+#legend3Text {
+    padding-left: 23px;
+}
+
+#legend4Text {
+    padding-left: 23px;
+}
+
+#legend5Text {
+    padding-left: 23px;
 }
 
 .explanation {

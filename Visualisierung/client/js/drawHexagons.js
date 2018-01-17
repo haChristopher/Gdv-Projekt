@@ -17,6 +17,7 @@ function drawHexagons(callback){
         function(callback) {countBikesInHexagon(bikes, callback);},
         function(callback) {getMaxAmount(callback);},
         function(callback) {colorCodeHexagons(callback);},
+        function(callback) {drawLegend(callback);},
         function(callback) {removeOldHexagons(callback);}
     ], function(err) {
         if (err) {
@@ -125,15 +126,15 @@ function colorCodeHexagons(callback){
 			hexagon.properties.class = 'filledHexagons Hexnumber' + hexCounter;
       var percentage = hexagon.properties.amount / (60.0*cellSize);
       if (percentage < 0.2) {
-        hexagon.properties.opacity = 0.25;
+        hexagon.properties.opacity = 0.2 + 0.3 + 1/(cellSize*100);
       } else if (percentage < 0.4){
-        hexagon.properties.opacity = 0.45;
+        hexagon.properties.opacity = 0.4 + 0.3 + 1/(cellSize*100);
       } else if (percentage < 0.6){
-        hexagon.properties.opacity = 0.65;
+        hexagon.properties.opacity = 0.6 + 0.3 + 1/(cellSize*100);
       } else if (percentage < 0.8){
-        hexagon.properties.opacity = 0.85;
+        hexagon.properties.opacity = 0.8 + 0.3 + 1/(cellSize*100);
       } else {
-        hexagon.properties.opacity = 1;
+        hexagon.properties.opacity = 1 + 0.3 + 1/(cellSize*100);
       }
 			hexValues[hexCounter] = hexagon.properties.amount;
 		}
@@ -164,4 +165,101 @@ function removeOldHexagons(callback){
 	d3.selectAll('#greyHexagon').remove();
 
 	callback();
+}
+
+function calculateSize(x){
+   return ((60 * cellSize)/100 * x *100);
+}
+
+// function drawLegend(callback){
+//  var ranges = [ 0 + " - " + calculateSize(0.2),
+//                calculateSize(0.2) + " - " + calculateSize(0.4),
+//                calculateSize(0.4) + " - " + calculateSize(0.6),
+//                calculateSize(0.6) + " - " + calculateSize(0.8),
+//                calculateSize(0.8) + " - " + calculateSize(1)];
+//
+//  var ul = d3.select('.legend').append('ul');
+//
+//  ul.selectAll('p')
+//  .html();
+//
+//  callback();
+
+function drawLegend(callback) {
+    var ranges = [1 + " - " + calculateSize(0.2),
+        calculateSize(0.2) + " - " + calculateSize(0.4),
+        calculateSize(0.4) + " - " + calculateSize(0.6),
+        calculateSize(0.6) + " - " + calculateSize(0.8),
+        calculateSize(0.8) + " - " + calculateSize(1)
+    ];
+
+    var yCoordAll = 50;
+
+    var svg = d3.select('.legend')
+        .append('div')
+        .attr('class', 'legendText')
+        .attr('width', 430)
+        .attr('height', 200);
+
+    svg.append('span')
+        .html('0')
+        // .style('float', 'left')
+        .style('fill', '#f7f7f7 ')
+        .attr('width', 20)
+        .attr('height', 20)
+        // .attr('x', 20)
+        .attr('y', yCoordAll)
+        .attr('id', 'legend0Text');
+
+    svg.append('span')
+        .html(ranges[0])
+        // .style('float', 'left')
+        .style('fill', '#f7f7f7 ')
+        .attr('width', 20)
+        .attr('height', 20)
+        // .attr('x', 20)
+        .attr('y', yCoordAll)
+        .attr('id', 'legend1Text');
+
+    svg.append('span')
+        .html(ranges[1])
+        // .style('float', 'left')
+        .style('fill', '#f7f7f7 ')
+        .attr('width', 20)
+        .attr('height', 20)
+        // .attr('x', 20)
+        .attr('y', yCoordAll)
+        .attr('id', 'legend2Text');
+
+    svg.append('span')
+        .html(ranges[2])
+        // .style('float', 'left')
+        .style('fill', '#f7f7f7 ')
+        .attr('width', 20)
+        .attr('height', 20)
+        // .attr('x', 20)
+        .attr('y', yCoordAll)
+        .attr('id', 'legend3Text');
+
+    svg.append('span')
+        .html(ranges[3])
+        // .style('float', 'left')
+        .style('fill', '#f7f7f7 ')
+        .attr('width', 20)
+        .attr('height', 20)
+        // .attr('x', 20)
+        .attr('y', yCoordAll)
+        .attr('id', 'legend4Text');
+
+    svg.append('span')
+        .html(ranges[4])
+        // .style('float', 'left')
+        .style('fill', '#f7f7f7 ')
+        .attr('width', 20)
+        .attr('height', 20)
+        // .attr('x', 20)
+        .attr('y', yCoordAll)
+        .attr('id', 'legend5Text');
+
+    callback();
 }
