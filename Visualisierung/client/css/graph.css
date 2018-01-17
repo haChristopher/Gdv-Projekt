@@ -2,6 +2,10 @@
     stroke: #F05E5F;
 }
 
+.tempLine{
+    stroke: #7fff7f;
+}
+
 .axis path{
 	stroke: #f7f7f7;
 }

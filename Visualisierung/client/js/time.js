@@ -3,7 +3,9 @@ var graphTooltip = d3.select("body").append("div")
 .style("opacity", 0);
 
 var index = null;
-var globalMouse = null;
+var x0 = null;
+var startMouse = [30, 46];
+var globalMouse = [30, 46];
 
 function drawGraph(callback){
   var margin = {top: 10, right: 37, bottom: 20, left: 15};
@@ -14,17 +16,33 @@ function drawGraph(callback){
 
   var x = d3.scaleTime()
   .domain(d3.extent(totalBikes, function(d) { return d.date; }))
-  .range([0, width-margin.left*3]);
+  .range([0, (width-(margin.left*4))]);
+
   var y = d3.scaleLinear()
   .domain([parseInt(totalBikes.maxTotal), 550])
   .range([margin.top, height-margin.bottom]);
 
+  var xTemp = d3.scaleTime()
+  .domain(d3.extent(weather, function(d) { return d.date; }))
+  .range([0, (width-(margin.left*3))]);
+
+  var yTemp = d3.scaleLinear()
+  .domain([parseInt(weather.maxTemperature), 0])
+  .range([margin.top, height-margin.bottom]);
+
   var bisectDate = d3.bisector(function(d) { return d.date; }).left;
+
+    // var templine = d3.line()
+    //   .xTemp(function(d) { return xTemp(d.date); })
+    //   .yTemp(function(d) { return yTemp(Math.round(d.temp)); });
 
   var valueline = d3.line()
       .x(function(d) { return x(d.date); })
       .y(function(d) { return y(parseInt(d.total_bikes)); })
       .defined(function(d) { return parseInt(d.total_bikes) != 0;});
+
+  // var temperatureLine = d3.line().x(function(d) { return x(d.date); }).tempScale(function(d) { return tempScale(d.temp); });
+  //     // .defined(function(d) { return parseInt(d.total_bikes) != 0;});
 
   var svg = d3.select('#time')
     .append("g")
@@ -54,11 +72,23 @@ function drawGraph(callback){
     .attr("transform", "translate(" + margin.left*2 + ",0)")
     .call(d3.axisLeft(y).ticks(5));
 
+  g.append("g")
+    .attr('height', '100%')
+    .attr('class', 'axis')
+    .attr("transform", "translate(" + (width-(margin.left*2)) + ",0)")
+    .call(d3.axisRight(yTemp).ticks(5));
+
   g.append("path")
     .data([totalBikes])
     .attr("class", "line")
     .attr("transform", "translate(" + margin.left*2 + ",0)")
     .attr("d", valueline);
+
+  // g.append("path")
+  //   .data([weather])
+  //   .attr("class", "tempLine")
+  //   .attr("transform", "translate(" + margin.left*2 + ",0)")
+  //   .attr("d", templine);
 
   var mouseG = g.append("g") // this is the black vertical line to follow mouse
       .attr("class", "mouse-over-effects");
@@ -73,7 +103,15 @@ function drawGraph(callback){
     .attr("class", "selected-line")
         .style("stroke", "white")
     .style("stroke-width", "1px")
-    .style("opacity", "0");
+    .style("opacity", "1")
+    .attr("d", function() {
+        var d = "M" + (margin.left*2) + "," + (height-(margin.top*1.5));
+        d += " " + (margin.left*2) + "," + margin.top;
+        return d;
+    });
+
+    x0 = x.invert(globalMouse[0]-(margin.left*2));
+    index = bisectDate(totalBikes, x0, 0);
 
   var verticalLine = mouseG.append('rect') // append a rect to catch mouse movements on canvas
       .attr('width', width-margin.right) // can't catch mouse events on a g element
@@ -81,6 +119,9 @@ function drawGraph(callback){
       .attr('fill', 'none')
       .attr('pointer-events', 'all')
       .attr('x', margin.left*2);
+
+    var playPushed = false;
+var pausePushed = false;
 
   verticalLine.on('mouseout', function() { // on mouse out hide line, circles and text
         d3.select('.mouse-line')
@@ -95,7 +136,7 @@ function drawGraph(callback){
       })
   .on('mousemove', function() { // mouse moving over canvas
         var mouse = d3.mouse(this);
-        var x0 = x.invert(d3.mouse(this)[0]);
+        var x0 = x.invert(d3.mouse(this)[0]-(margin.left*2));
         var i = bisectDate(totalBikes, x0, 0);
         if(i === totalBikes.length){
           i--;
@@ -116,11 +157,11 @@ function drawGraph(callback){
             .style('top', (d3.event.pageY - 20) + 'px');
   })
   .on('click', function(){
-    index = 0;
+    pausePushed = true;
+    playPushed = false;
     var mouse = d3.mouse(this);
-    console.log(mouse);
     globalMouse = mouse;
-    var x0 = x.invert(d3.mouse(this)[0]);
+    x0 = x.invert(d3.mouse(this)[0]-(margin.left*2));
     index = bisectDate(totalBikes, x0, 0);
     if(index === totalBikes.length){
       index--;
@@ -144,10 +185,11 @@ function drawGraph(callback){
 
   d3.select('body').on('keydown', function(){
     var mouse = d3.mouse(this);
-    if(index != null){
       var mousemovement = 0;
       var noUpdate = false;
         if(d3.event.keyCode === 39){
+          playPushed = false;
+          pausePushed = true;
           if(index === (totalBikes.length-1)){
           noUpdate = true;
         }else{
@@ -156,6 +198,8 @@ function drawGraph(callback){
           globalMouse[0]++;
         }
       }else if(d3.event.keyCode === 37){
+        playPushed = false;
+          pausePushed = true;
         if(index === 0){
           noUpdate = true;
         }else{
@@ -181,8 +225,143 @@ function drawGraph(callback){
 
         initiateHexagons(postbody);
       }
-      }
     });
+
+  playPauseButton = d3.select('#buttonPlayOrPause');
+returnButton = d3.select('#buttonReturn');
+backwardsButton = d3.select('#buttonBackwards');
+forwardsButton = d3.select('#buttonForwards');
+
+  playPauseButton.on('click', function(){
+      if(!playPushed && !pausePushed){
+        playPushed = true;
+        console.log('Play button pushed.');
+      } else if(pausePushed){
+        pausePushed = false;
+        playPushed = true;
+        console.log('Play button pushed after Pause.');
+      } else if(playPushed){
+        pausePushed = true;
+        playPushed = false;
+        console.log('Pause button pushed.');
+      }
+
+      if(playPushed){
+        var interval = setInterval(function(){
+            if(playPushed && !pausePushed){
+            x0 = x.invert(globalMouse[0]-(margin.left*2));
+              index = bisectDate(totalBikes, x0, 0);
+
+                var mousemovement = 0;
+                var noUpdate = false;
+                  
+                if(index === (totalBikes.length-1)){
+                    pausePushed = true;
+                    playPushed = false;
+                }else{
+                  index++;
+                  mousemovement = globalMouse[0]+1.25;
+                  globalMouse[0]+=1.5;
+                }
+
+                d3.select('.selected-line')
+                    .attr("d", function() {
+                      var d = "M" + mousemovement + "," + (height-(margin.top*1.5));
+                      d += " " + mousemovement + "," + margin.top;
+                      return d;
+                    });
+
+                queryTimestamp = totalBikes[index].b_time;
+                var postbody = {
+                    'time': queryTimestamp
+                }
+
+                initiateHexagons(postbody);
+
+              if(!playPushed){
+              clearInterval(interval);
+            }
+          } else {
+            if(!playPushed){
+              clearInterval(interval);
+            }
+          }
+        }, 2500);
+      }
+  })
+
+returnButton.on('click', function(){
+  pausePushed = true;
+  playPushed = false;
+  
+  globalMouse[0] = startMouse[0];
+
+  index = 0;
+
+  d3.select('.selected-line')
+  .attr("d", function() {
+        var d = "M" + (margin.left*2) + "," + (height-(margin.top*1.5));
+        d += " " + (margin.left*2) + "," + margin.top;
+        return d;
+    });
+
+  queryTimestamp = totalBikes[index].b_time;
+                var postbody = {
+                    'time': queryTimestamp
+                }
+
+  initiateHexagons(postbody);
+})
+
+forwardsButton.on('click', function(){
+  pausePushed = true;
+  playPushed = false;
+
+  if(index != totalBikes.length-1){
+    index++;
+  mousemovement = globalMouse[0]+1;
+  globalMouse[0]++;
+
+  d3.select('.selected-line')
+    .attr("d", function() {
+      var d = "M" + mousemovement + "," + (height-(margin.top*1.5));
+      d += " " + mousemovement + "," + margin.top;
+      return d;
+    });
+
+      queryTimestamp = totalBikes[index].b_time;
+                var postbody = {
+                    'time': queryTimestamp
+                }
+
+  initiateHexagons(postbody);
+  }
+})
+
+backwardsButton.on('click', function(){
+  pausePushed = true;
+  playPushed = false;
+
+  if(index != 0){
+    index--;
+    mousemovement = globalMouse[0]-1;
+    globalMouse[0]--;
+
+    d3.select('.selected-line')
+      .attr("d", function() {
+        var d = "M" + mousemovement + "," + (height-(margin.top*1.5));
+        d += " " + mousemovement + "," + margin.top;
+        return d;
+      });
+
+        queryTimestamp = totalBikes[index].b_time;
+                var postbody = {
+                    'time': queryTimestamp
+                }
+
+  initiateHexagons(postbody);
+  }
+})
 
   callback();
 }
