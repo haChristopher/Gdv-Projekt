@@ -22,27 +22,26 @@ function drawGraph(callback){
   .domain([parseInt(totalBikes.maxTotal), 550])
   .range([margin.top, height-margin.bottom]);
 
-  var xTemp = d3.scaleTime()
+  var xT = d3.scaleTime()
   .domain(d3.extent(weather, function(d) { return d.date; }))
   .range([0, (width-(margin.left*3))]);
 
-  var yTemp = d3.scaleLinear()
+  var yT = d3.scaleLinear()
   .domain([parseInt(weather.maxTemperature), 0])
   .range([margin.top, height-margin.bottom]);
 
   var bisectDate = d3.bisector(function(d) { return d.date; }).left;
-
-    // var templine = d3.line()
-    //   .xTemp(function(d) { return xTemp(d.date); })
-    //   .yTemp(function(d) { return yTemp(Math.round(d.temp)); });
 
   var valueline = d3.line()
       .x(function(d) { return x(d.date); })
       .y(function(d) { return y(parseInt(d.total_bikes)); })
       .defined(function(d) { return parseInt(d.total_bikes) != 0;});
 
-  // var temperatureLine = d3.line().x(function(d) { return x(d.date); }).tempScale(function(d) { return tempScale(d.temp); });
-  //     // .defined(function(d) { return parseInt(d.total_bikes) != 0;});
+      var templine = d3.line()
+      .x(function(d) { return x(d.date); })
+      .y(function(d) { return yT(Math.round(d.temp)); })
+      .defined(function(d) { return parseInt(d.temp) != (-273);});
+
 
   var svg = d3.select('#time')
     .append("g")
@@ -76,19 +75,19 @@ function drawGraph(callback){
     .attr('height', '100%')
     .attr('class', 'axis')
     .attr("transform", "translate(" + (width-(margin.left*2)) + ",0)")
-    .call(d3.axisRight(yTemp).ticks(5));
+    .call(d3.axisRight(yT).ticks(5));
+
+  g.append("path")
+    .data([weather])
+    .attr("class", "tempLine")
+    .attr("transform", "translate(" + margin.left*2 + ",0)")
+    .attr("d", templine);
 
   g.append("path")
     .data([totalBikes])
     .attr("class", "line")
     .attr("transform", "translate(" + margin.left*2 + ",0)")
     .attr("d", valueline);
-
-  // g.append("path")
-  //   .data([weather])
-  //   .attr("class", "tempLine")
-  //   .attr("transform", "translate(" + margin.left*2 + ",0)")
-  //   .attr("d", templine);
 
   var mouseG = g.append("g") // this is the black vertical line to follow mouse
       .attr("class", "mouse-over-effects");
@@ -152,9 +151,9 @@ var pausePushed = false;
             .duration(200)
             .style('opacity', .9);
 
-        graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong>')
-            .style('left', (d3.event.pageX - 75) + 'px')
-            .style('top', (d3.event.pageY - 20) + 'px');
+        graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong></br></br><strong>Unoccupied bikes:</br><strong>' + totalBikes[i].total_bikes + '</strong>')
+            .style('left', (d3.event.pageX + 10) + 'px')
+            .style('top', (d3.event.pageY - 60) + 'px');
   })
   .on('click', function(){
     pausePushed = true;
@@ -293,7 +292,7 @@ forwardsButton = d3.select('#buttonForwards');
 returnButton.on('click', function(){
   pausePushed = true;
   playPushed = false;
-  
+
   globalMouse[0] = startMouse[0];
 
   index = 0;

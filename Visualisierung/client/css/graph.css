@@ -1,9 +1,11 @@
 .line{
     stroke: #F05E5F;
+    fill: none;
 }
 
 .tempLine{
-    stroke: #7fff7f;
+    stroke: #1e90ff;
+    fill: none;
 }
 
 .axis path{
@@ -12,6 +14,14 @@
 
 .axis{
 	stroke: #f7f7f7;
+}
+
+.axis-temp{
+    stroke: #f7f7f7;
+}
+
+.axis-temp path{
+    stroke: #f7f7f7;
 }
 
 .tick line{
@@ -36,7 +46,7 @@ div.graphTooltip {
     z-index: 9999;
     text-align: center;
     width: 110px;
-    height: 45px;
+    height: 125px;
     padding: 2px;
     font-family: Ubuntu Mono;
     font-size: 20px;

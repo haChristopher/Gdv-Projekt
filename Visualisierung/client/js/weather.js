@@ -10,12 +10,22 @@ function drawWeather(callback){
   timeString = timeString.substring(0, index-1);
 
   var temp = parseFloat(bikes[0].temp);
-  temp = Math.round(temp) + " °C";
+
+  var xTemperature = 0;
+  var tempClassName = 'no-data';
+  if(temp === (-273.0)){
+      temp = "No data available";
+
+  }else {
+      temp = Math.round(temp) + " °C";
+      xTemperature = 180;
+      tempClassName = 'weather-celcius';
+  }
   var imagePath = "./images/" + weatherText + ".svg";
 
   async.series([
       function(callback) {removeOldWeather(callback);},
-      function(callback) {drawImages(callback, imagePath, temp, timeString);}
+      function(callback) {drawImages(callback, imagePath, temp, timeString, xTemperature, tempClassName);}
   ], function(err) {
       if (err) {
           console.log(err);
@@ -25,7 +35,7 @@ function drawWeather(callback){
   });
 }
 
-function drawImages(callback, imagePath, temp, time){
+function drawImages(callback, imagePath, temp, time, xTemperature, tempClassName){
 
   var svg = d3.select(".weather").append("svg")
       .attr("width", 500)
@@ -45,8 +55,8 @@ function drawImages(callback, imagePath, temp, time){
       .attr("width", 200)
       .attr("height", 200)
       .style('fill', '#f7f7f7')
-      .attr('class', 'weather-celcius')
-      .attr("x", 180)
+      .attr('class', tempClassName)
+      .attr("x", xTemperature)
       .attr("y", 70);
 
     var time2 = g.append("text")

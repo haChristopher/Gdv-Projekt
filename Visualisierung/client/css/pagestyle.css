@@ -219,6 +219,13 @@ p {
     letter-spacing: -8px;
 }
 
+.no-data {
+    font-size: 42.5px;
+    font-weight: lighter;
+    font-family: Ubuntu Mono;
+    letter-spacing: -8px;
+}
+
 .weather-text {
     font-size: 30px;
     font-weight: lighter;
