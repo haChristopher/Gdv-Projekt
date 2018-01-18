@@ -263,8 +263,32 @@ p {
     margin-right: 10px;
 }
 
+.keyboardKeys {
+    padding-top: 2px;
+}
+
+#key_left {
+    height: 25px;
+    margin-left: 23px;
+}
+
+#key_space {
+    height: 25px;
+    margin-left: 31px;
+}
+
+#key_right {
+    height: 25px;
+    margin-left: 29px;
+}
+
+#key_r {
+    height: 25px;
+    margin-left: 56px;
+}
+
 .weather {
-    padding-top: 30px;
+    padding-top: 50px;
     text-align: left;
 }
 
