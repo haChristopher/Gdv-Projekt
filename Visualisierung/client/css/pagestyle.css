@@ -169,6 +169,7 @@ p {
 }
 
 .legend {
+    padding-top: 10px;
     font-size: 30px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
@@ -194,7 +195,7 @@ p {
 
 .legendImage {
     height: 40px;
-    padding-left: 10px;
+    padding-left: 0px;
 }
 
 .legendText {
@@ -204,27 +205,27 @@ p {
 }
 
 #legend0Text {
-    padding-left: 28px;
+    padding-left: 18px;
 }
 
 #legend1Text {
-    padding-left: 44px;
+    padding-left: 35px;
 }
 
 #legend2Text {
-    padding-left: 26px;
+    padding-left: 16px;
 }
 
 #legend3Text {
-    padding-left: 23px;
+    padding-left: 14px;
 }
 
 #legend4Text {
-    padding-left: 23px;
+    padding-left: 13px;
 }
 
 #legend5Text {
-    padding-left: 23px;
+    padding-left: 14px;
 }
 
 .legendGraph {
@@ -235,7 +236,7 @@ p {
 #graphBikes, #graphTemp {
     margin-top: 8px;
     padding-bottom: 10px;
-    padding-left: 13px;
+    padding-left: 0px;
     font-size: 20px;
     font-weight: lighter;
     font-family: Ubuntu Mono;
@@ -245,16 +246,8 @@ p {
     width: 30px;
 }
 
-#graphBikes {
-
-}
-
-#graphTemp {
-
-}
-
 .buttons {
-    padding-top: 30px;
+    padding-top: 20px;
     text-align: left;
 }
 
