@@ -7,9 +7,12 @@ var minY = 50.716;
 var maxX = 7.373;
 var maxY = 51.089;
 
-var point1 = L.latLng(minY+0.01, minX+0.01),
-point2 = L.latLng(maxY-0.01, maxX-0.01);
+var point1 = L.latLng(minY+0.01, minX+0.01);
+var point2 = L.latLng(maxY-0.01, maxX-0.01);
 var bounds = L.latLngBounds(point1, point2);
+
+var imageUrl = '/images/textKoeln.png';
+var imageBounds = [[50.955349, 6.937181], [50.942341, 7.0]];
 
 var map;
 
@@ -23,6 +26,9 @@ map.setMaxBounds(bounds);
 map.on('drag', function() {
     map.panInsideBounds(bounds, { animate: false });
 });
+
+// Adds Köln as text to map
+L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
 // Dark themed map without labels, white street lines
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {

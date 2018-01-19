@@ -94,17 +94,6 @@ html, body, .wrapper {
     margin: 10px 0px 10px 10px;
 }
 
-.cityName {
-    position: absolute;
-    font-size: 40px;
-    font-weight: lighter;
-    font-family: Ubuntu Mono;
-    color: #f05e5f;
-    background-color: #242b2d;
-    z-index: 401;
-    top: 735px;
-}
-
 #aboveTime {
     margin: 0px 0px 0px 10px;
     background-color: #303032;
