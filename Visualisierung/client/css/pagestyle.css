@@ -110,11 +110,13 @@ html, body, .wrapper {
 
 #graphTagBikes {
     top: 805px;
+    color: #F05E5F;
 }
 
 #graphTagTemp {
     top: 805px;
     left: 1350px;
+    color: #1e90ff;
 }
 
 #graphTagDate {
