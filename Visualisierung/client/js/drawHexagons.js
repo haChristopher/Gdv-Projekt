@@ -126,9 +126,9 @@ function colorCodeHexagons(callback){
 			hexagon.properties.class = 'filledHexagons Hexnumber' + hexCounter;
       var percentage = hexagon.properties.amount / (60.0*cellSize);
       if (percentage < 0.2) {
-        hexagon.properties.opacity = 0.4;
+        hexagon.properties.opacity = 0.3;
       } else if (percentage < 0.4){
-        hexagon.properties.opacity = 0.55;
+        hexagon.properties.opacity = 0.5;
       } else if (percentage < 0.6){
         hexagon.properties.opacity = 0.7;
       } else if (percentage < 0.8){
