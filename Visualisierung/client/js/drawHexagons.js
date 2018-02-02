@@ -14,7 +14,8 @@ var hexValues = [];
 /* 
 ** This method works like a central flow controller for drawing hexagons.
 ** Since JavaScript is asynchronous by nature this has to be done in order to make everything work the way we want it to.
-** After the array of hexagons is created the bikes within the hexagons are counted.
+** After the array of hexagons is created the bikes within the hexagons are counted and color coded realtive to the maximum amount of bikes wihtin a hexagon.
+** After this the legend is drawn and old hexagons are deleted.
 */
 function drawHexagons(callback){
     async.series([
