@@ -71,7 +71,7 @@ function drawGraph(callback){
     .attr('width', '100%')
     .attr('class', 'axis')
     .attr("transform", "translate(" + margin.left*2 + "," + (height-margin.bottom) + ")")
-    .call(d3.axisBottom(x).ticks(30));
+    .call(d3.axisBottom(x).ticks(30).tickFormat(d3.timeFormat("%b / %d")));
 
   g.append("g")
     .attr('height', '100%')
