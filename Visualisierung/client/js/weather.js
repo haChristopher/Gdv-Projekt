@@ -20,7 +20,7 @@ function drawWeather(callback){
     
     // If now data is available temp is -273. This has to be displayed properly
     if(temp === (-273.0)){
-        temp = "No data available";
+        temp = "Keine Daten vorhanden";
     }else {
         temp = Math.round(temp) + " °C";
         xTemperature = 180;
@@ -53,6 +53,7 @@ function drawImages(callback, imagePath, temp, time, xTemperature, tempClassName
 
     var g = svg.append("g");
 
+    // Draws image
     var img = g.append("svg:image")
         .attr("xlink:href", imagePath)
         .attr("width", 100)
@@ -60,6 +61,7 @@ function drawImages(callback, imagePath, temp, time, xTemperature, tempClassName
         .attr("x", 10)
         .attr("y", 0);
 
+    // Draws text for temperature
     var text = g.append("text")
         .html(temp)
         .attr("width", 200)
@@ -69,6 +71,7 @@ function drawImages(callback, imagePath, temp, time, xTemperature, tempClassName
         .attr("x", xTemperature)
         .attr("y", 70);
 
+    // Draws text for weather
     var time2 = g.append("text")
         .html(time)
         .attr("width", 200)

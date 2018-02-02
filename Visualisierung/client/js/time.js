@@ -192,9 +192,15 @@ function drawGraph(callback){
             .duration(200)
             .style('opacity', .9);
 
-        graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong></br></br><strong>Freie Fahrräder:</br><strong>' + totalBikes[i].total_bikes + '</strong></br></br><strong>Temperatur:</br><strong>' + weather[i].temperature + '</strong>')
-            .style('left', (d3.event.pageX + 10) + 'px')
-            .style('top', (d3.event.pageY - 60) + 'px');
+        if(weather[i].temp != -273){
+            graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong></br></br><strong>Freie Fahrräder:</br><strong>' + totalBikes[i].total_bikes + '</strong></br></br><strong>Temperatur:</br><strong>' + weather[i].temperature + '</strong>')
+                .style('left', (d3.event.pageX + 10) + 'px')
+                .style('top', (d3.event.pageY - 60) + 'px');
+        }else{
+            graphTooltip.html('<strong>' + totalBikes[i].displayTime + ' Uhr</strong></br></br></br><strong>Keine Daten vorhanden</strong>')
+                .style('left', (d3.event.pageX + 10) + 'px')
+                .style('top', (d3.event.pageY - 60) + 'px');
+        }
     })
     .on('click', function(){ // mouse click, get index of total bikes and initiate reload of hexagons
         pausePushed = true;
