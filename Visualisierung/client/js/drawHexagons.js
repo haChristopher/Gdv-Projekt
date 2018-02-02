@@ -11,6 +11,11 @@ var maxAmount;
 var hexCounter = 0;
 var hexValues = [];
 
+/* 
+** This method works like a central flow controller for drawing hexagons.
+** Since JavaScript is asynchronous by nature this has to be done in order to make everything work the way we want it to.
+** After the array of hexagons is created the bikes within the hexagons are counted.
+*/
 function drawHexagons(callback){
     async.series([
         function(callback) {createArrayOfHexagons(callback);},
@@ -49,11 +54,15 @@ function drawHexagons(callback){
     });
 }
 
+/*
+** Created the array of hexagons covering cologne.
+*/
 function createArrayOfHexagons(callback){
 	geoArray = [];
 	for(var i = 0; i < hexgrid.features.length; i++){
 		var geo = hexgrid.features[i];
 
+        // Every hexagon is represented with a object
 		var object = {
 			type: 'Feature',
 			properties: {
@@ -72,6 +81,9 @@ function createArrayOfHexagons(callback){
 	}
 }
 
+/*
+** Counts the bikes within the hexagons
+*/
 function countBikesInHexagon(bikes, callback){
 	for(var i = 0; i < bikes.length; i++){
 		var bike = bikes[i];
@@ -80,6 +92,7 @@ function countBikesInHexagon(bikes, callback){
 
 			var coordinates = [bike.longitude, bike.latitude];
 
+            // Check if bike is within hexagon coordinates
 			if(pointToPolygon(coordinates, hexagon.geometry.coordinates[0])){
 				var counter = hexagon.properties;
 				if(counter === null){
@@ -99,6 +112,9 @@ function countBikesInHexagon(bikes, callback){
 	}
 }
 
+/*
+** Checks if the coordinates of a bike are within the boundries of a hexagon.
+*/
 function pointToPolygon(point, vs) {
     var x = point[0], y = point[1];
 
@@ -115,6 +131,9 @@ function pointToPolygon(point, vs) {
     return inside;
 }
 
+/*
+** Color codes the hexagons
+*/
 function colorCodeHexagons(callback){
 	hexValues = [];
 	hexCounter = 0;
@@ -124,19 +143,23 @@ function colorCodeHexagons(callback){
 		if(hexagon.properties.amount != 0 && hexagon.properties.amount != null){
 			hexCounter++;
 			hexagon.properties.class = 'filledHexagons Hexnumber' + hexCounter;
-      var percentage = hexagon.properties.amount / (60.0*cellSize);
-      if (percentage <= 0.2) {
-        hexagon.properties.opacity = 0.3;
-      } else if (percentage <= 0.4){
-        hexagon.properties.opacity = 0.5;
-      } else if (percentage <= 0.6){
-        hexagon.properties.opacity = 0.7;
-      } else if (percentage <= 0.8){
-        hexagon.properties.opacity = 0.85;
-      } else {
-        hexagon.properties.opacity = 1;
-      }
-			hexValues[hexCounter] = hexagon.properties.amount;
+        
+            var percentage = hexagon.properties.amount / (60.0*cellSize);
+          
+            // Depending on the calculated percentage the opacity is allocated to the hexagons
+            if (percentage <= 0.2) {
+                hexagon.properties.opacity = 0.3;
+            } else if (percentage <= 0.4){
+                hexagon.properties.opacity = 0.5;
+            } else if (percentage <= 0.6){
+                hexagon.properties.opacity = 0.7;
+            } else if (percentage <= 0.8){
+                hexagon.properties.opacity = 0.85;
+            } else {
+                hexagon.properties.opacity = 1;
+            }
+    		
+            hexValues[hexCounter] = hexagon.properties.amount;
 		}
 
 		if(i === (geoArray.length-1)){
@@ -145,6 +168,9 @@ function colorCodeHexagons(callback){
 	}
 }
 
+/*
+** Gets the maximum amount within a hexagon
+*/
 function getMaxAmount(callback){
 	maxAmount = 0;
 	for(var i = 0; i < geoArray.length; i++){
@@ -160,6 +186,9 @@ function getMaxAmount(callback){
 	}
 }
 
+/*
+** Removes the old hexagons
+*/
 function removeOldHexagons(callback){
 	d3.selectAll('#hexagon').remove();
 	d3.selectAll('#greyHexagon').remove();
@@ -167,10 +196,16 @@ function removeOldHexagons(callback){
 	callback();
 }
 
+/*
+** Calculates the size of the legend
+*/
 function calculateSize(x){
    return ((60 * cellSize)/100 * x *100);
 }
 
+/*
+** Draws the legend
+*/
 function drawLegend(callback) {
     var ranges = [1 + " - " + calculateSize(0.2),
         calculateSize(0.2)+1 + " - " + calculateSize(0.4),
@@ -190,61 +225,49 @@ function drawLegend(callback) {
 
     svg.append('span')
         .html('0')
-        // .style('float', 'left')
         .style('fill', '#f7f7f7 ')
         .attr('width', 20)
         .attr('height', 20)
-        // .attr('x', 20)
         .attr('y', yCoordAll)
         .attr('id', 'legend0Text');
 
     svg.append('span')
         .html(ranges[0])
-        // .style('float', 'left')
         .style('fill', '#f7f7f7 ')
         .attr('width', 20)
         .attr('height', 20)
-        // .attr('x', 20)
         .attr('y', yCoordAll)
         .attr('id', 'legend1Text');
 
     svg.append('span')
         .html(ranges[1])
-        // .style('float', 'left')
         .style('fill', '#f7f7f7 ')
         .attr('width', 20)
         .attr('height', 20)
-        // .attr('x', 20)
         .attr('y', yCoordAll)
         .attr('id', 'legend2Text');
 
     svg.append('span')
         .html(ranges[2])
-        // .style('float', 'left')
         .style('fill', '#f7f7f7 ')
         .attr('width', 20)
         .attr('height', 20)
-        // .attr('x', 20)
         .attr('y', yCoordAll)
         .attr('id', 'legend3Text');
 
     svg.append('span')
         .html(ranges[3])
-        // .style('float', 'left')
         .style('fill', '#f7f7f7 ')
         .attr('width', 20)
         .attr('height', 20)
-        // .attr('x', 20)
         .attr('y', yCoordAll)
         .attr('id', 'legend4Text');
 
     svg.append('span')
         .html(ranges[4])
-        // .style('float', 'left')
         .style('fill', '#f7f7f7 ')
         .attr('width', 20)
         .attr('height', 20)
-        // .attr('x', 20)
         .attr('y', yCoordAll)
         .attr('id', 'legend5Text');
 
