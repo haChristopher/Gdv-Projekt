@@ -125,13 +125,13 @@ function colorCodeHexagons(callback){
 			hexCounter++;
 			hexagon.properties.class = 'filledHexagons Hexnumber' + hexCounter;
       var percentage = hexagon.properties.amount / (60.0*cellSize);
-      if (percentage < 0.2) {
+      if (percentage <= 0.2) {
         hexagon.properties.opacity = 0.3;
-      } else if (percentage < 0.4){
+      } else if (percentage <= 0.4){
         hexagon.properties.opacity = 0.5;
-      } else if (percentage < 0.6){
+      } else if (percentage <= 0.6){
         hexagon.properties.opacity = 0.7;
-      } else if (percentage < 0.8){
+      } else if (percentage <= 0.8){
         hexagon.properties.opacity = 0.85;
       } else {
         hexagon.properties.opacity = 1;
@@ -173,10 +173,10 @@ function calculateSize(x){
 
 function drawLegend(callback) {
     var ranges = [1 + " - " + calculateSize(0.2),
-        calculateSize(0.2) + " - " + calculateSize(0.4),
-        calculateSize(0.4) + " - " + calculateSize(0.6),
-        calculateSize(0.6) + " - " + calculateSize(0.8),
-        calculateSize(0.8) + " - " + calculateSize(1)
+        calculateSize(0.2)+1 + " - " + calculateSize(0.4),
+        calculateSize(0.4)+1 + " - " + calculateSize(0.6),
+        calculateSize(0.6)+1 + " - " + calculateSize(0.8),
+        calculateSize(0.8)+1 + " - " + calculateSize(1)
     ];
 
     d3.selectAll('.legendText').remove();
