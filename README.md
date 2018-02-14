@@ -47,10 +47,3 @@ then go to localhost:3000
 
 
 Python 3.4.4: https://www.python.org/downloads/release/python-344/
-
-
-## Run as cronjob
-
-```
-*/10 * * * * python/orEnviromentPath crawl.py >/tmp/stdout.log 2>/tmp/stderr.log
-```
