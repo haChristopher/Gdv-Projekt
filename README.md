@@ -32,7 +32,7 @@ sql -u username -p database_name < file.sql
 or you can use the mysql workbench.
 
 
-Then go to Gdv-Projekt/Visualisierung/routes/sqlDatabase.js and change the sql connection setting with you data.
+Then go to Gdv-Projekt/Visualisierung/routes/sqlDatabase.js and change the sql connection settings with your database settings:
 
 ```
 var connection = mysql.createConnection({
